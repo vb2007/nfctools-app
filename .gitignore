@@ -5,7 +5,23 @@
 #IDE Specific
 /.idea
 
+# Gradle
+.gradle/
+build/
+*/build/
+*/*/build/
+
+# Android Studio captures/profiling
+captures/
+.cxx/
+
 # ------------
 # Files
 # ------------
+
+# Local SDK path, machine-specific
+local.properties
+
+# Log files
+*.log
 

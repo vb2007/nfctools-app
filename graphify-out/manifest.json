@@ -1,0 +1,292 @@
+{
+  ".claude/settings.json": {
+    "mtime": 1783242763.089378,
+    "ast_hash": "e51077b6a7f1f67afc748f1a32a1557d",
+    "semantic_hash": "e51077b6a7f1f67afc748f1a32a1557d"
+  },
+  ".claude/settings.local.json": {
+    "mtime": 1782950241.9162097,
+    "ast_hash": "43b5c5e06d5b4b4f75e500bfcf41e3bf",
+    "semantic_hash": "43b5c5e06d5b4b4f75e500bfcf41e3bf"
+  },
+  "app/build.gradle.kts": {
+    "mtime": 1783242249.4683418,
+    "ast_hash": "af72a044e473dc698dcf39ed48787ec3",
+    "semantic_hash": "af72a044e473dc698dcf39ed48787ec3"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/MainActivity.kt": {
+    "mtime": 1783023632.5559537,
+    "ast_hash": "96f9a13ff4c5949aa6bd41eeda0f9196",
+    "semantic_hash": "96f9a13ff4c5949aa6bd41eeda0f9196"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/NfcToolApp.kt": {
+    "mtime": 1783023632.5559855,
+    "ast_hash": "469b3fa765a3baa3fdd8e23d6dcbabcd",
+    "semantic_hash": "469b3fa765a3baa3fdd8e23d6dcbabcd"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/di/AppModule.kt": {
+    "mtime": 1783023659.657979,
+    "ast_hash": "3f7ab237b6e709d7c5b5dd984466007e",
+    "semantic_hash": "3f7ab237b6e709d7c5b5dd984466007e"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt": {
+    "mtime": 1783023632.5559855,
+    "ast_hash": "ecc68ee13669aa2ef5e4fbf09e94ae6b",
+    "semantic_hash": "ecc68ee13669aa2ef5e4fbf09e94ae6b"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefRecordModel.kt": {
+    "mtime": 1783023632.5560405,
+    "ast_hash": "fd0dfff2e3a3364582de84eca691481c",
+    "semantic_hash": "fd0dfff2e3a3364582de84eca691481c"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/model/ScanResult.kt": {
+    "mtime": 1783023632.5560548,
+    "ast_hash": "8c7fa49fbf4bd7b17549b2991dabdaa5",
+    "semantic_hash": "8c7fa49fbf4bd7b17549b2991dabdaa5"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/model/TagInfo.kt": {
+    "mtime": 1783023632.5560548,
+    "ast_hash": "ad142623e4178f2660dadbf311b5bc68",
+    "semantic_hash": "ad142623e4178f2660dadbf311b5bc68"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/model/TagType.kt": {
+    "mtime": 1783023632.5560548,
+    "ast_hash": "756b125afafed2fe33b0ebe51c3f149a",
+    "semantic_hash": "756b125afafed2fe33b0ebe51c3f149a"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/model/WriteResult.kt": {
+    "mtime": 1783023632.5560548,
+    "ast_hash": "6e5264eba206ee7cb3d5809d6cd6d38e",
+    "semantic_hash": "6e5264eba206ee7cb3d5809d6cd6d38e"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/read/NdefParser.kt": {
+    "mtime": 1783023632.5560548,
+    "ast_hash": "847f48a23e26ab1f107eb4187877ec52",
+    "semantic_hash": "847f48a23e26ab1f107eb4187877ec52"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/read/TagReader.kt": {
+    "mtime": 1783023632.5561225,
+    "ast_hash": "4e16d100f4019c462eb120b04dbd521c",
+    "semantic_hash": "4e16d100f4019c462eb120b04dbd521c"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/read/TagTypeDetector.kt": {
+    "mtime": 1783023632.5561225,
+    "ast_hash": "33fabc75b3cac323363e044aaff3e65b",
+    "semantic_hash": "33fabc75b3cac323363e044aaff3e65b"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/read/UltralightDumpReader.kt": {
+    "mtime": 1783023632.5561225,
+    "ast_hash": "5591e9052216c29559b43b949a3c110a",
+    "semantic_hash": "5591e9052216c29559b43b949a3c110a"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/write/NdefTextWriter.kt": {
+    "mtime": 1783023632.5561225,
+    "ast_hash": "6c7024d61b568c60e3ae2b400103aa77",
+    "semantic_hash": "6c7024d61b568c60e3ae2b400103aa77"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/components/NfcStatusBanner.kt": {
+    "mtime": 1783023632.5561917,
+    "ast_hash": "75708b925801b09b23f2f425439c4c3a",
+    "semantic_hash": "75708b925801b09b23f2f425439c4c3a"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/home/HomeScreen.kt": {
+    "mtime": 1783023632.5561917,
+    "ast_hash": "1fda510ca2772e86f93aff196ab7dc1e",
+    "semantic_hash": "1fda510ca2772e86f93aff196ab7dc1e"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppBottomBar.kt": {
+    "mtime": 1783023632.5561917,
+    "ast_hash": "ba97b18ccf4727de3634485aea709bd1",
+    "semantic_hash": "ba97b18ccf4727de3634485aea709bd1"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt": {
+    "mtime": 1783023632.5562546,
+    "ast_hash": "941ba4f17f2126952bd035233cd61f00",
+    "semantic_hash": "941ba4f17f2126952bd035233cd61f00"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/navigation/Destinations.kt": {
+    "mtime": 1783023632.5562546,
+    "ast_hash": "5d694e9139b44da27e8f2be017026bcf",
+    "semantic_hash": "5d694e9139b44da27e8f2be017026bcf"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/read/HexDumpSection.kt": {
+    "mtime": 1783023632.5562546,
+    "ast_hash": "6740bdcc07849b1e5a3712b8ef95638d",
+    "semantic_hash": "6740bdcc07849b1e5a3712b8ef95638d"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/read/ReadScreen.kt": {
+    "mtime": 1783023632.556298,
+    "ast_hash": "770e48a94708130660a7a8ab9e7a0df7",
+    "semantic_hash": "770e48a94708130660a7a8ab9e7a0df7"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/read/ReadViewModel.kt": {
+    "mtime": 1783023632.556298,
+    "ast_hash": "3cde502bdbcd11e82f0392d90994acdc",
+    "semantic_hash": "3cde502bdbcd11e82f0392d90994acdc"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/read/TagTypeDisplay.kt": {
+    "mtime": 1783023632.556298,
+    "ast_hash": "e82783f00ba20057e248010d5badd3c4",
+    "semantic_hash": "e82783f00ba20057e248010d5badd3c4"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/settings/SettingsScreen.kt": {
+    "mtime": 1783023632.556298,
+    "ast_hash": "162ff8325663ab199ce762f824ca0ced",
+    "semantic_hash": "162ff8325663ab199ce762f824ca0ced"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/theme/Color.kt": {
+    "mtime": 1783023632.556298,
+    "ast_hash": "e4a2776f2da7ea8a9ea8056e78a3269e",
+    "semantic_hash": "e4a2776f2da7ea8a9ea8056e78a3269e"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/theme/Theme.kt": {
+    "mtime": 1783023632.556374,
+    "ast_hash": "7c07b6b7e00567314037e1983708a66f",
+    "semantic_hash": "7c07b6b7e00567314037e1983708a66f"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/theme/Type.kt": {
+    "mtime": 1783023632.556374,
+    "ast_hash": "aa43e16d63e8b27381b79db0e33c1a68",
+    "semantic_hash": "aa43e16d63e8b27381b79db0e33c1a68"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt": {
+    "mtime": 1783023632.556374,
+    "ast_hash": "3c51e3a3b3e8dca106398afd14f08792",
+    "semantic_hash": "3c51e3a3b3e8dca106398afd14f08792"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteViewModel.kt": {
+    "mtime": 1783023632.556418,
+    "ast_hash": "5d8ffd0e8aea7caf25cdfa18d22a0911",
+    "semantic_hash": "5d8ffd0e8aea7caf25cdfa18d22a0911"
+  },
+  "app/src/test/java/hu/vb2007/nfctool/nfc/read/NdefParserTest.kt": {
+    "mtime": 1783023632.556554,
+    "ast_hash": "ab5400a7f743b282509d547c37252932",
+    "semantic_hash": "ab5400a7f743b282509d547c37252932"
+  },
+  "app/src/test/java/hu/vb2007/nfctool/nfc/read/TagTypeDetectorTest.kt": {
+    "mtime": 1783023632.556582,
+    "ast_hash": "3ed9ef99ed5c6195bc3adb0092b55cc6",
+    "semantic_hash": "3ed9ef99ed5c6195bc3adb0092b55cc6"
+  },
+  "app/src/test/java/hu/vb2007/nfctool/nfc/read/UltralightDumpReaderTest.kt": {
+    "mtime": 1783023632.556582,
+    "ast_hash": "e5eeab06a06c96167e7cfa544f1c35c3",
+    "semantic_hash": "e5eeab06a06c96167e7cfa544f1c35c3"
+  },
+  "app/src/test/java/hu/vb2007/nfctool/nfc/write/NdefTextWriterTest.kt": {
+    "mtime": 1783023632.556582,
+    "ast_hash": "6a04e629f6f96878f205deab372dbba6",
+    "semantic_hash": "6a04e629f6f96878f205deab372dbba6"
+  },
+  "build.gradle.kts": {
+    "mtime": 1783023632.556582,
+    "ast_hash": "2d26f5eadaa05f755bab54e1071b4c23",
+    "semantic_hash": "2d26f5eadaa05f755bab54e1071b4c23"
+  },
+  "gradlew": {
+    "mtime": 1783023632.5568507,
+    "ast_hash": "a43be8432bac3ffd05b3769aa42fe996",
+    "semantic_hash": "a43be8432bac3ffd05b3769aa42fe996"
+  },
+  "settings.gradle.kts": {
+    "mtime": 1783023632.5568507,
+    "ast_hash": "f01005a2bca5a3c5dddced4ffc85d419",
+    "semantic_hash": "f01005a2bca5a3c5dddced4ffc85d419"
+  },
+  ".claude/CLAUDE.md": {
+    "mtime": 1783242763.0891352,
+    "ast_hash": "9b31786b637be3c13978bec4c2330752",
+    "semantic_hash": "9b31786b637be3c13978bec4c2330752"
+  },
+  ".claude/skills/graphify/SKILL.md": {
+    "mtime": 1783242763.0890536,
+    "ast_hash": "1e48e0226c5b26741c54209a51c94454",
+    "semantic_hash": "1e48e0226c5b26741c54209a51c94454"
+  },
+  ".claude/skills/graphify/references/add-watch.md": {
+    "mtime": 1783242736.6215723,
+    "ast_hash": "d59d027fe449f06aa03905a01184e779",
+    "semantic_hash": "d59d027fe449f06aa03905a01184e779"
+  },
+  ".claude/skills/graphify/references/exports.md": {
+    "mtime": 1783242736.6215723,
+    "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
+    "semantic_hash": "9da2a2152e60a22f07f05fed5158f287"
+  },
+  ".claude/skills/graphify/references/extraction-spec.md": {
+    "mtime": 1783242736.6215723,
+    "ast_hash": "42fef56a01698118f7fd722acdadea34",
+    "semantic_hash": "42fef56a01698118f7fd722acdadea34"
+  },
+  ".claude/skills/graphify/references/github-and-merge.md": {
+    "mtime": 1783242736.6215723,
+    "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
+    "semantic_hash": "cde13df085e4c492aeb7ba298a996d0d"
+  },
+  ".claude/skills/graphify/references/hooks.md": {
+    "mtime": 1783242736.622535,
+    "ast_hash": "3f545db6ce646650bb9de588f5512a27",
+    "semantic_hash": "3f545db6ce646650bb9de588f5512a27"
+  },
+  ".claude/skills/graphify/references/query.md": {
+    "mtime": 1783242736.622535,
+    "ast_hash": "3c46f8ad006874260614ed8657d02307",
+    "semantic_hash": "3c46f8ad006874260614ed8657d02307"
+  },
+  ".claude/skills/graphify/references/transcribe.md": {
+    "mtime": 1783242736.6235352,
+    "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
+    "semantic_hash": "67b6a5fa6c0974e18f60db9f8932fbd8"
+  },
+  ".claude/skills/graphify/references/update.md": {
+    "mtime": 1783242736.624535,
+    "ast_hash": "c698309979460d0f02ba616417844399",
+    "semantic_hash": "c698309979460d0f02ba616417844399"
+  },
+  ".github/workflows/release.yml": {
+    "mtime": 1783241948.958833,
+    "ast_hash": "e4f190a4692b6dfd741ed4585318122f",
+    "semantic_hash": "e4f190a4692b6dfd741ed4585318122f"
+  },
+  "CLAUDE.md": {
+    "mtime": 1783242763.0892825,
+    "ast_hash": "8f4325d22252957a3cc60d7b69a955fb",
+    "semantic_hash": "8f4325d22252957a3cc60d7b69a955fb"
+  },
+  "README.md": {
+    "mtime": 1782943841.209352,
+    "ast_hash": "d91893d8c55f34423c2957ba4c4353a5",
+    "semantic_hash": "d91893d8c55f34423c2957ba4c4353a5"
+  },
+  "docs/adb-debugging.md": {
+    "mtime": 1783023659.6279912,
+    "ast_hash": "d73d9629826a8237f7319bf464e85047",
+    "semantic_hash": "d73d9629826a8237f7319bf464e85047"
+  },
+  "docs/build-release-package.md": {
+    "mtime": 1783023632.5566506,
+    "ast_hash": "c84446c45397ac792ac6b7e8d9573a75",
+    "semantic_hash": "c84446c45397ac792ac6b7e8d9573a75"
+  },
+  "docs/build-test-package.md": {
+    "mtime": 1783023632.5566506,
+    "ast_hash": "82f36a853084a87da33296264b820c70",
+    "semantic_hash": "82f36a853084a87da33296264b820c70"
+  },
+  "docs/self-hosted-runner-setup.md": {
+    "mtime": 1783220844.0283232,
+    "ast_hash": "8539698de765a5699f67503e9fe79a7c",
+    "semantic_hash": "8539698de765a5699f67503e9fe79a7c"
+  },
+  "planning/v1-plan.md": {
+    "mtime": 1782945857.2094524,
+    "ast_hash": "ecc7eabc451d649cad02d2a5cbca2a59",
+    "semantic_hash": "ecc7eabc451d649cad02d2a5cbca2a59"
+  },
+  "references/gh-release.yml": {
+    "mtime": 1783216063.7528238,
+    "ast_hash": "da7f189ba6e0da5397af7c4825408ead",
+    "semantic_hash": "da7f189ba6e0da5397af7c4825408ead"
+  }
+}

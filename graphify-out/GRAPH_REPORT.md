@@ -1,12 +1,13 @@
 # Graph Report - .  (2026-07-05)
 
 ## Corpus Check
-- Corpus is ~20,156 words - fits in a single context window. You may not need a graph.
+- 3 files · ~20,099 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 283 nodes · 352 edges · 37 communities (25 shown, 12 thin omitted)
+- 291 nodes · 360 edges · 38 communities (26 shown, 12 thin omitted)
 - Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 24 edges (avg confidence: 0.81)
-- Token cost: 0 input · 128,516 output
+- Token cost: 0 input · 32,756 output
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_NFC Controller & State|NFC Controller & State]]
@@ -17,13 +18,14 @@
 - [[_COMMUNITY_Read Screen UI|Read Screen UI]]
 - [[_COMMUNITY_v1 Plan & Locked Decisions|v1 Plan & Locked Decisions]]
 - [[_COMMUNITY_Write ViewModel|Write ViewModel]]
-- [[_COMMUNITY_CIRelease Pipeline|CI/Release Pipeline]]
 - [[_COMMUNITY_Tag Type Detection|Tag Type Detection]]
 - [[_COMMUNITY_Tag Type Detector Tests|Tag Type Detector Tests]]
+- [[_COMMUNITY_CIRelease Pipeline|CI/Release Pipeline]]
 - [[_COMMUNITY_Ultralight Dump Reader|Ultralight Dump Reader]]
 - [[_COMMUNITY_Write Screen UI|Write Screen UI]]
 - [[_COMMUNITY_Graphify Maintenance & Rules|Graphify Maintenance & Rules]]
 - [[_COMMUNITY_Read ViewModel|Read ViewModel]]
+- [[_COMMUNITY_PR Test Gate Workflow|PR Test Gate Workflow]]
 - [[_COMMUNITY_Tag Reader|Tag Reader]]
 - [[_COMMUNITY_NDEF Parser Tests|NDEF Parser Tests]]
 - [[_COMMUNITY_Navigation Routes|Navigation Routes]]
@@ -54,8 +56,6 @@
 10. `AppRoot()` - 7 edges
 
 ## Surprising Connections (you probably didn't know these)
-- `Legacy Node.js Release Workflow Template` --semantically_similar_to--> `CI publish job (tag + GitHub Release)`  [INFERRED] [semantically similar]
-  references/gh-release.yml → .github/workflows/release.yml
 - `CI / Releases (release.yml summary)` --shares_data_with--> `Android SDK Runner Install`  [INFERRED]
   CLAUDE.md → docs/self-hosted-runner-setup.md
 - `CI / Releases (release.yml summary)` --shares_data_with--> `Runner Service .env Wiring`  [INFERRED]
@@ -64,16 +64,19 @@
   CLAUDE.md → .claude/skills/graphify/SKILL.md
 - `CI / Releases (release.yml summary)` --references--> `CI test job (unit tests + lint)`  [EXTRACTED]
   CLAUDE.md → .github/workflows/release.yml
+- `Unsigned Release APK Build + Debug-Signing Workaround` --shares_data_with--> `CI build job (debug + unsigned-release APKs)`  [INFERRED]
+  docs/build-release-package.md → .github/workflows/release.yml
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
+- **PR test job sequential flow (checkout -> unit tests -> lint)** — github_workflows_test_step_checkout, github_workflows_test_step_unit_tests, github_workflows_test_step_lint [EXTRACTED 1.00]
 - **Graphify Extraction Pipeline (Detect -> AST -> Semantic -> Merge -> Build)** — _claude_skills_graphify_skill_step2_detect_files, _claude_skills_graphify_skill_part_a_ast, _claude_skills_graphify_skill_part_b_semantic, _claude_skills_graphify_skill_part_c_merge, _claude_skills_graphify_skill_step4_build_graph [EXTRACTED 1.00]
 - **NFC Core Architecture Components (v1 Plan)** — planning_v1_plan_nfccontroller, planning_v1_plan_tagreader, planning_v1_plan_ndefparser, planning_v1_plan_tagtypedetector, planning_v1_plan_ndeftextwriter, planning_v1_plan_ultralightdumpreader, planning_v1_plan_mainactivity [EXTRACTED 1.00]
 - **Release CI/CD Pipeline (test -> build -> publish)** — _github_workflows_release_test_job, _github_workflows_release_build_job, _github_workflows_release_publish_job [EXTRACTED 1.00]
 
-## Communities (37 total, 12 thin omitted)
+## Communities (38 total, 12 thin omitted)
 
 ### Community 0 - "NFC Controller & State"
 Cohesion: 0.14
@@ -107,13 +110,13 @@ Nodes (15): Architecture Summary, Locked Decisions (do not re-litigate), Decisio
 Cohesion: 0.24
 Nodes (8): Editing, Failure, StateFlow, String, Success, WaitingForTag, WriteUiState, WriteViewModel
 
-### Community 8 - "CI/Release Pipeline"
-Cohesion: 0.20
-Nodes (12): CI build job (debug + unsigned-release APKs), Promote Existing Pre-release on Main Merge, CI publish job (tag + GitHub Release), CI test job (unit tests + lint), CI / Releases (release.yml summary), Development Environment Constraints, Dropbox Crash Log Diagnosis, Unsigned Release APK Build + Debug-Signing Workaround (+4 more)
-
-### Community 9 - "Tag Type Detection"
+### Community 8 - "Tag Type Detection"
 Cohesion: 0.30
 Nodes (8): TagType, classifyGetVersionResponse(), classifyLegacyType(), ByteArray, Int, Tag, TagTypeDetector, totalPages()
+
+### Community 10 - "CI/Release Pipeline"
+Cohesion: 0.22
+Nodes (11): CI build job (debug + unsigned-release APKs), Promote Existing Pre-release on Main Merge, CI publish job (tag + GitHub Release), CI test job (unit tests + lint), CI / Releases (release.yml summary), Development Environment Constraints, Dropbox Crash Log Diagnosis, Unsigned Release APK Build + Debug-Signing Workaround (+3 more)
 
 ### Community 11 - "Ultralight Dump Reader"
 Cohesion: 0.29
@@ -131,28 +134,32 @@ Nodes (10): /graphify add <url>, --watch (folder watcher), graphify claude insta
 Cohesion: 0.29
 Nodes (7): Error, StateFlow, ReadUiState, ReadViewModel, Scanning, Success, ViewModel
 
-### Community 15 - "Tag Reader"
+### Community 15 - "PR Test Gate Workflow"
+Cohesion: 0.25
+Nodes (9): actions/checkout@v7 (external action), Concurrency group (cancel-in-progress per PR ref), ./gradlew lintDebug invocation, ./gradlew testDebugUnitTest invocation, test job (self-hosted), Checkout code step, Run lint step, Run unit tests step (+1 more)
+
+### Community 16 - "Tag Reader"
 Cohesion: 0.32
 Nodes (5): Error, ScanResult, Success, Tag, TagReader
 
-### Community 17 - "Navigation Routes"
+### Community 18 - "Navigation Routes"
 Cohesion: 0.53
 Nodes (5): HomeRoute, ReadRoute, SettingsRoute, WriteRoute, NavKey
 
-### Community 18 - "Graphify Query Command"
+### Community 19 - "Graphify Query Command"
 Cohesion: 0.50
 Nodes (4): save-result Feedback Loop, BFS/DFS Graph Traversal, Constrained Query Vocabulary Expansion, /graphify query
 
-### Community 21 - "Graphify GitHub Clone & Merge"
+### Community 22 - "Graphify GitHub Clone & Merge"
 Cohesion: 0.67
 Nodes (3): graphify clone, graphify merge-graphs, Step 0: GitHub URL / Multi-path Merge
 
-### Community 23 - "Testing & Build Order Notes"
+### Community 24 - "Testing & Build Order Notes"
 Cohesion: 0.67
 Nodes (3): Testing Notes (Robolectric / emulator limits), Suggested Build Order, Verification Plan (build/unit-test/on-device)
 
 ## Knowledge Gaps
-- **39 isolated node(s):** `NdefRecordKind`, `Fast Path for Existing Graph`, `Step 1: Ensure Graphify Installed`, `Step 2: Detect Files`, `Step 2.5: Video and Audio Transcription` (+34 more)
+- **42 isolated node(s):** `NdefRecordKind`, `Fast Path for Existing Graph`, `Step 1: Ensure Graphify Installed`, `Step 2: Detect Files`, `Step 2.5: Video and Audio Transcription` (+37 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -160,13 +167,13 @@ Nodes (3): Testing Notes (Robolectric / emulator limits), Suggested Build Order,
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `ReadScreen()` connect `Read Screen UI` to `App Shell & Navigation`, `Write Screen UI`, `Read ViewModel`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
+  _High betweenness centrality (0.119) - this node is a cross-community bridge._
 - **Why does `NdefRecordRow()` connect `Read Screen UI` to `NDEF Parsing & Model`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
 - **Why does `NdefRecordModel` connect `NDEF Parsing & Model` to `Read Screen UI`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+  _High betweenness centrality (0.088) - this node is a cross-community bridge._
 - **What connects `NdefRecordKind`, `Graphify Always-On Trigger Instruction`, `Fast Path for Existing Graph` to the rest of the system?**
-  _47 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _51 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `NFC Controller & State` be split into smaller, more focused modules?**
   _Cohesion score 0.13768115942028986 - nodes in this community are weakly interconnected._
 - **Should `App Shell & Navigation` be split into smaller, more focused modules?**

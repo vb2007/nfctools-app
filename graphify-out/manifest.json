@@ -1,8 +1,8 @@
 {
   ".claude/settings.json": {
-    "mtime": 1783242763.089378,
-    "ast_hash": "e51077b6a7f1f67afc748f1a32a1557d",
-    "semantic_hash": "e51077b6a7f1f67afc748f1a32a1557d"
+    "mtime": 1783273042.3043222,
+    "ast_hash": "aad73d3d62ab09fbabaca51f8bd125c7",
+    "semantic_hash": "aad73d3d62ab09fbabaca51f8bd125c7"
   },
   ".claude/settings.local.json": {
     "mtime": 1782950241.9162097,
@@ -10,9 +10,9 @@
     "semantic_hash": "43b5c5e06d5b4b4f75e500bfcf41e3bf"
   },
   "app/build.gradle.kts": {
-    "mtime": 1783242249.4683418,
-    "ast_hash": "af72a044e473dc698dcf39ed48787ec3",
-    "semantic_hash": "af72a044e473dc698dcf39ed48787ec3"
+    "mtime": 1783266959.8040164,
+    "ast_hash": "25b5cbe564cf637d82caca6a67805d47",
+    "semantic_hash": "25b5cbe564cf637d82caca6a67805d47"
   },
   "app/src/main/java/hu/vb2007/nfctool/MainActivity.kt": {
     "mtime": 1783023632.5559537,
@@ -195,52 +195,52 @@
     "semantic_hash": "f01005a2bca5a3c5dddced4ffc85d419"
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1783242763.0891352,
+    "mtime": 1783264883.7340763,
     "ast_hash": "9b31786b637be3c13978bec4c2330752",
     "semantic_hash": "9b31786b637be3c13978bec4c2330752"
   },
   ".claude/skills/graphify/SKILL.md": {
-    "mtime": 1783242763.0890536,
+    "mtime": 1783264883.734545,
     "ast_hash": "1e48e0226c5b26741c54209a51c94454",
     "semantic_hash": "1e48e0226c5b26741c54209a51c94454"
   },
   ".claude/skills/graphify/references/add-watch.md": {
-    "mtime": 1783242736.6215723,
+    "mtime": 1783264883.734545,
     "ast_hash": "d59d027fe449f06aa03905a01184e779",
     "semantic_hash": "d59d027fe449f06aa03905a01184e779"
   },
   ".claude/skills/graphify/references/exports.md": {
-    "mtime": 1783242736.6215723,
+    "mtime": 1783264883.7346787,
     "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
     "semantic_hash": "9da2a2152e60a22f07f05fed5158f287"
   },
   ".claude/skills/graphify/references/extraction-spec.md": {
-    "mtime": 1783242736.6215723,
+    "mtime": 1783264883.7346787,
     "ast_hash": "42fef56a01698118f7fd722acdadea34",
     "semantic_hash": "42fef56a01698118f7fd722acdadea34"
   },
   ".claude/skills/graphify/references/github-and-merge.md": {
-    "mtime": 1783242736.6215723,
+    "mtime": 1783264883.7346787,
     "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
     "semantic_hash": "cde13df085e4c492aeb7ba298a996d0d"
   },
   ".claude/skills/graphify/references/hooks.md": {
-    "mtime": 1783242736.622535,
+    "mtime": 1783264883.7346787,
     "ast_hash": "3f545db6ce646650bb9de588f5512a27",
     "semantic_hash": "3f545db6ce646650bb9de588f5512a27"
   },
   ".claude/skills/graphify/references/query.md": {
-    "mtime": 1783242736.622535,
+    "mtime": 1783264883.7346787,
     "ast_hash": "3c46f8ad006874260614ed8657d02307",
     "semantic_hash": "3c46f8ad006874260614ed8657d02307"
   },
   ".claude/skills/graphify/references/transcribe.md": {
-    "mtime": 1783242736.6235352,
+    "mtime": 1783264883.7346787,
     "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
     "semantic_hash": "67b6a5fa6c0974e18f60db9f8932fbd8"
   },
   ".claude/skills/graphify/references/update.md": {
-    "mtime": 1783242736.624535,
+    "mtime": 1783264883.7346787,
     "ast_hash": "c698309979460d0f02ba616417844399",
     "semantic_hash": "c698309979460d0f02ba616417844399"
   },
@@ -250,7 +250,7 @@
     "semantic_hash": "e4f190a4692b6dfd741ed4585318122f"
   },
   "CLAUDE.md": {
-    "mtime": 1783242763.0892825,
+    "mtime": 1783264883.7346787,
     "ast_hash": "8f4325d22252957a3cc60d7b69a955fb",
     "semantic_hash": "8f4325d22252957a3cc60d7b69a955fb"
   },
@@ -284,9 +284,9 @@
     "ast_hash": "ecc7eabc451d649cad02d2a5cbca2a59",
     "semantic_hash": "ecc7eabc451d649cad02d2a5cbca2a59"
   },
-  "references/gh-release.yml": {
-    "mtime": 1783216063.7528238,
-    "ast_hash": "da7f189ba6e0da5397af7c4825408ead",
-    "semantic_hash": "da7f189ba6e0da5397af7c4825408ead"
+  ".github/workflows/test.yml": {
+    "mtime": 1783266959.8040164,
+    "ast_hash": "91cc8b530e2849774241cc32fb67653e",
+    "semantic_hash": "91cc8b530e2849774241cc32fb67653e"
   }
 }

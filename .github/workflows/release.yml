@@ -2,7 +2,8 @@ name: Release on GitHub
 
 on:
   push:
-    branches: [main, dev]
+    # dev-releases-debug is a temporary test branch — remove it once the workflow is proven
+    branches: [main, dev, dev-releases-debug]
   workflow_dispatch: {} # manual test trigger; remove once the push-triggered path is proven
 
 jobs:

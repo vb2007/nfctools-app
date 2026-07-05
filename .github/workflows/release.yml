@@ -3,7 +3,7 @@ name: Release on GitHub
 on:
   push:
     branches: [main, dev]
-  workflow_dispatch: {} # manual test trigger; remove once the push-triggered path is proven
+  workflow_dispatch: {} # manual re-release trigger; only dispatchable once this is on main
 
 jobs:
   # Runner prerequisites (see CLAUDE.md "Development environment"):
@@ -50,14 +50,20 @@ jobs:
       - name: Build release APK (unsigned — no signing config yet)
         run: ./gradlew assembleRelease
 
+      - name: Stage APKs for upload
+        # upload-artifact preserves the full relative path of matched files rather than
+        # flattening to just the filename, so stage a flat copy for the publish job.
+        run: |
+          mkdir -p staged-apks
+          cp app/build/outputs/apk/debug/app-debug.apk staged-apks/
+          cp app/build/outputs/apk/release/app-release-unsigned.apk staged-apks/
+
       - name: Upload APK artifacts
         uses: actions/upload-artifact@v7
         with:
           name: apks
           if-no-files-found: error
-          path: |
-            app/build/outputs/apk/debug/app-debug.apk
-            app/build/outputs/apk/release/app-release-unsigned.apk
+          path: staged-apks/
 
   publish:
     needs: build

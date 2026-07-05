@@ -11,7 +11,7 @@ v1 is implemented and builds/tests/lints clean (`./gradlew assembleDebug testDeb
 ## Development environment
 
 - **System/OS package management is manual, done by the user — agents must not run `pacman`/`yay`, or install JDKs.** If something at the OS level appears to be missing, state exactly what's needed and wait rather than trying to install or work around it. This does **not** cover Android SDK components fetched by Gradle/AGP itself during a build (e.g. a missing `platforms;android-NN` or `build-tools;NN` auto-downloaded into `$ANDROID_HOME`) — that's project-scoped tooling, not a system package, and is fine to let happen.
-- JDK: system default is JDK 26 (`java-26-openjdk`), but Gradle/AGP run on **JDK 21** (`java-21-openjdk`, installed alongside — check with `archlinux-java status`). Pinned explicitly via `org.gradle.java.home` in `gradle.properties`, not the system default.
+- JDK: system default is JDK 26 (`java-26-openjdk`), with **JDK 21** also installed (`java-21-openjdk` — check with `archlinux-java status`). The project pins JDK 21 for actual compilation **portably via `kotlin { jvmToolchain(21) }`** in `app/build.gradle.kts` (not a hardcoded path in `gradle.properties` — that broke the self-hosted CI runner, which is Debian, not Arch; see below). The Gradle wrapper itself still needs *some* JDK 17+ on `JAVA_HOME`/`PATH` to bootstrap — any modern JDK works for that, the toolchain handles getting 21 for the actual build regardless of which JVM bootstrapped it.
 - Android SDK root: `/opt/android-sdk` (`$ANDROID_HOME`/`$ANDROID_SDK_ROOT`). `sdkmanager`/`avdmanager`/`adb` are on `PATH` in login shells (a plain non-login `bash` may not have them — use `bash -lc '...'` if needed).
 - No emulator/system-image is installed, and it wouldn't help anyway — **NFC doesn't work in the emulator**. Real testing requires a physical device connected over `adb`.
 
@@ -19,6 +19,12 @@ v1 is implemented and builds/tests/lints clean (`./gradlew assembleDebug testDeb
 
 - AGP 9.0+ ships **built-in Kotlin support** and a **new DSL** (`ApplicationExtension` instead of `BaseAppModuleExtension`), both enabled by default — and both are incompatible with the classic `org.jetbrains.kotlin.android` plugin, which this project still uses (its interop with the Compose compiler and kotlinx-serialization Gradle plugins isn't well documented yet for the new mode). `gradle.properties` sets `android.builtInKotlin=false` and `android.newDsl=false` to opt back into the classic, well-documented plugin/DSL wiring. Revisit this once built-in-Kotlin + new-DSL support for Compose/Koin/serialization is mature — note Google's docs say the opt-out is removed entirely in AGP 10.0.
 - `compileSdk`/`targetSdk` are set as plain integers (`37`), **not** the fractional `37.1` platform revision that happened to be pre-installed locally — AGP 9.2 (stable) has no documented support for fractional API levels; that DSL only starts appearing in AGP 9.3 (still preview/RC as of writing). Gradle auto-downloads whatever plain-integer platform/build-tools it needs.
+
+## CI / Releases
+
+`.github/workflows/release.yml` runs on a **self-hosted runner** (`vbServer`, Debian) on push to `main`/`dev` (`dev` publishes as a pre-release) plus manual `workflow_dispatch`. Three jobs: `test` (unit tests + lint) → `build` (debug + unsigned-release APKs) → `publish` (tags `v<versionName>` from `app/build.gradle.kts`, skips if that tag already exists, creates a GitHub Release with generated notes and both APKs attached). No release signing config exists yet — the release APK is unsigned.
+
+Runner prerequisites (not provisioned by the workflow — see the "system packages are manual" rule above, it applies to the CI machine too): JDK 21 discoverable via `JAVA_HOME`/`PATH`/standard install locations (satisfies both the Gradle wrapper bootstrap and the `jvmToolchain(21)` requirement), Android SDK at `$ANDROID_HOME`, and an authenticated `gh` CLI. `workflow_dispatch` only works for workflows already present on the repo's **default branch** (`main`) — it can't be used to test-run a workflow that only exists on a feature branch; use a temporary branch added to the `push:` trigger instead (removed once proven).
 
 ## Locked decisions (do not re-litigate without asking)
 

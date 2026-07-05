@@ -2,9 +2,8 @@ name: Release on GitHub
 
 on:
   push:
-    # dev-releases-debug is a temporary test branch — remove it once the workflow is proven
-    branches: [main, dev, dev-releases-debug]
-  workflow_dispatch: {} # manual test trigger; remove once the push-triggered path is proven
+    branches: [main, dev]
+  workflow_dispatch: {} # manual re-release trigger; only dispatchable once this is on main
 
 jobs:
   # Runner prerequisites (see CLAUDE.md "Development environment"):

@@ -124,3 +124,12 @@ jobs:
             $LATEST_FLAG \
             apks/nfctool-${{ steps.meta.outputs.tag }}-debug.apk \
             apks/nfctool-${{ steps.meta.outputs.tag }}-release-unsigned.apk
+
+      - name: Promote existing release (main merge of a version already pre-released from dev)
+        # Tags aren't branch-scoped: if dev already published this version as a pre-release
+        # and main now merges the same version (no fresh bump), promote that release instead
+        # of silently doing nothing — flip it from pre-release to the repo's latest release.
+        if: steps.tag-check.outputs.exists == 'true' && steps.meta.outputs.prerelease == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release edit "${{ steps.meta.outputs.tag }}" --prerelease=false --latest

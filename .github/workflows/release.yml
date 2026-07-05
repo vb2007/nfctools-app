@@ -1,0 +1,135 @@
+name: Release on GitHub
+
+on:
+  push:
+    branches: [main, dev]
+  workflow_dispatch: {} # manual re-release trigger; only dispatchable once this is on main
+
+jobs:
+  # Runner prerequisites (see CLAUDE.md "Development environment"):
+  #   - JDK 21 at /usr/lib/jvm/java-21-openjdk (gradle.properties pins org.gradle.java.home
+  #     to this exact path, so a JAVA_HOME set by e.g. actions/setup-java would be ignored)
+  #   - Android SDK at $ANDROID_HOME (/opt/android-sdk) with the platform/build-tools this
+  #     project needs — Gradle/AGP auto-fetches anything missing
+  #   - `gh` CLI, authenticated: https://github.com/cli/cli/blob/trunk/docs/install_linux.md
+
+  test:
+    runs-on: self-hosted
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run lint
+        run: ./gradlew lintDebug
+
+  build:
+    needs: test
+    runs-on: self-hosted
+    permissions:
+      contents: read
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Read versionName from app/build.gradle.kts
+        id: version
+        run: |
+          VERSION=$(grep -oP 'versionName\s*=\s*"\K[^"]+' app/build.gradle.kts)
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Build debug APK
+        run: ./gradlew assembleDebug
+
+      - name: Build release APK (unsigned — no signing config yet)
+        run: ./gradlew assembleRelease
+
+      - name: Stage APKs for upload
+        # upload-artifact preserves the full relative path of matched files rather than
+        # flattening to just the filename, so stage a flat copy for the publish job.
+        run: |
+          mkdir -p staged-apks
+          cp app/build/outputs/apk/debug/app-debug.apk staged-apks/
+          cp app/build/outputs/apk/release/app-release-unsigned.apk staged-apks/
+
+      - name: Upload APK artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: apks
+          if-no-files-found: error
+          path: staged-apks/
+
+  publish:
+    needs: build
+    runs-on: self-hosted
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # full history + tags, for tag lookup and release notes generation
+
+      - name: Download APK artifacts
+        uses: actions/download-artifact@v8
+        with:
+          name: apks
+          path: apks
+
+      - name: Determine tag and pre-release status
+        id: meta
+        run: |
+          TAG="v${{ needs.build.outputs.version }}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          if [ "${{ github.ref_name }}" = "dev" ]; then
+            echo "prerelease=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "prerelease=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check if tag already exists
+        id: tag-check
+        run: |
+          if git tag -l "${{ steps.meta.outputs.tag }}" | grep -q "${{ steps.meta.outputs.tag }}"; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Rename APKs for release
+        if: steps.tag-check.outputs.exists == 'false'
+        run: |
+          mv apks/app-debug.apk "apks/nfctool-${{ steps.meta.outputs.tag }}-debug.apk"
+          mv apks/app-release-unsigned.apk "apks/nfctool-${{ steps.meta.outputs.tag }}-release-unsigned.apk"
+
+      - name: Create GitHub Release
+        if: steps.tag-check.outputs.exists == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          LATEST_FLAG="--latest"
+          if [ "${{ steps.meta.outputs.prerelease }}" = "true" ]; then
+            LATEST_FLAG="--prerelease"
+          fi
+          gh release create "${{ steps.meta.outputs.tag }}" \
+            --title "${{ steps.meta.outputs.tag }}" \
+            --target "${{ github.sha }}" \
+            --generate-notes \
+            $LATEST_FLAG \
+            apks/nfctool-${{ steps.meta.outputs.tag }}-debug.apk \
+            apks/nfctool-${{ steps.meta.outputs.tag }}-release-unsigned.apk
+
+      - name: Promote existing release (main merge of a version already pre-released from dev)
+        # Tags aren't branch-scoped: if dev already published this version as a pre-release
+        # and main now merges the same version (no fresh bump), promote that release instead
+        # of silently doing nothing — flip it from pre-release to the repo's latest release.
+        if: steps.tag-check.outputs.exists == 'true' && steps.meta.outputs.prerelease == 'false'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release edit "${{ steps.meta.outputs.tag }}" --prerelease=false --latest

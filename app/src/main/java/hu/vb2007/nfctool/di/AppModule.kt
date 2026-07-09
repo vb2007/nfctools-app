@@ -5,7 +5,7 @@ import hu.vb2007.nfctool.nfc.read.NdefParser
 import hu.vb2007.nfctool.nfc.read.TagReader
 import hu.vb2007.nfctool.nfc.read.TagTypeDetector
 import hu.vb2007.nfctool.nfc.read.UltralightDumpReader
-import hu.vb2007.nfctool.nfc.write.NdefTextWriter
+import hu.vb2007.nfctool.nfc.write.NdefWriter
 import hu.vb2007.nfctool.ui.read.ReadViewModel
 import hu.vb2007.nfctool.ui.write.WriteViewModel
 import org.koin.core.module.dsl.viewModel
@@ -16,7 +16,7 @@ val appModule = module {
     single { TagTypeDetector() }
     single { UltralightDumpReader() }
     single { TagReader(get(), get(), get()) }
-    single { NdefTextWriter() }
+    single { NdefWriter() }
     single { NfcController(get(), get(), get()) }
 
     viewModel { ReadViewModel(get()) }

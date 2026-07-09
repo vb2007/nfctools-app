@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt": {
-    "mtime": 1783631610.2640588,
-    "ast_hash": "aee33021a9c3fadfaa0b1f0933338855",
+    "mtime": 1783623161.8152478,
+    "ast_hash": "765d2092edc68ada9f8912e9c06fa932",
     "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefRecordModel.kt": {
@@ -55,8 +55,8 @@
     "semantic_hash": "756b125afafed2fe33b0ebe51c3f149a"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/WriteResult.kt": {
-    "mtime": 1783631570.817458,
-    "ast_hash": "6e5264eba206ee7cb3d5809d6cd6d38e",
+    "mtime": 1783622929.048698,
+    "ast_hash": "1f1e8e1f7996ffc30187abd7847f5d1d",
     "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/read/NdefParser.kt": {
@@ -145,13 +145,13 @@
     "semantic_hash": "aa43e16d63e8b27381b79db0e33c1a68"
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt": {
-    "mtime": 1783631665.8123147,
-    "ast_hash": "ada8d08a7397fccd22e724f9e7d48c5d",
+    "mtime": 1783623286.4553697,
+    "ast_hash": "df6823194f22bfb0fcbcd903dec7664a",
     "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteViewModel.kt": {
-    "mtime": 1783631634.8100555,
-    "ast_hash": "b79b624915474c60627422c71984cbbd",
+    "mtime": 1783623231.6891186,
+    "ast_hash": "9ed5c5868208b1cf86688c8ec4d53231",
     "semantic_hash": ""
   },
   "app/src/test/java/hu/vb2007/nfctool/nfc/read/NdefParserTest.kt": {
@@ -275,13 +275,13 @@
     "semantic_hash": "ecc7eabc451d649cad02d2a5cbca2a59"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt": {
-    "mtime": 1783631565.7702532,
-    "ast_hash": "e6bbe6aa8f2d105121af98db0b6b561a",
+    "mtime": 1783622921.8154016,
+    "ast_hash": "55188c8061a37ed77fa141a60a7a2c89",
     "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/write/NdefWriter.kt": {
-    "mtime": 1783631585.948072,
-    "ast_hash": "ce47a45a80fa06e2f01d630e98cdda8d",
+    "mtime": 1783623121.1145763,
+    "ast_hash": "5d7d856428fcd8b9dcb0d32b17570f9c",
     "semantic_hash": ""
   },
   "app/src/test/java/hu/vb2007/nfctool/nfc/write/NdefWriterTest.kt": {

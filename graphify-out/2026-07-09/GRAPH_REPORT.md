@@ -1,16 +1,16 @@
 # Graph Report - nfctools-app  (2026-07-09)
 
 ## Corpus Check
-- 57 files · ~21,398 words
+- 57 files · ~21,680 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 424 nodes · 478 edges · 110 communities (28 shown, 82 thin omitted)
-- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 38 edges (avg confidence: 0.8)
+- 429 nodes · 492 edges · 111 communities (29 shown, 82 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 39 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e82e7eb8`
+- Built from commit: `6ba37866`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -46,6 +46,7 @@
 - [[_COMMUNITY_Graphify Fast-Path Shortcut|Graphify Fast-Path Shortcut]]
 - [[_COMMUNITY_Graphify Install Check|Graphify Install Check]]
 - [[_COMMUNITY_AGP9 Build Gotchas|AGP9 Build Gotchas]]
+- [[_COMMUNITY_buildUriMessage|buildUriMessage]]
 - [[_COMMUNITY_NdefPayload|NdefPayload]]
 - [[_COMMUNITY_ADB & USB Debugging|ADB & USB Debugging]]
 - [[_COMMUNITY_graphify reference extra exports and benchmark|graphify reference: extra exports and benchmark]]
@@ -124,9 +125,9 @@
 1. `Text` - 19 edges
 2. `NfcController` - 16 edges
 3. `What You Must Do When Invoked` - 12 edges
-4. `NdefPayload` - 11 edges
-5. `WriteViewModel` - 11 edges
-6. `TagTypeDetectorTest` - 11 edges
+4. `WriteViewModel` - 11 edges
+5. `TagTypeDetectorTest` - 11 edges
+6. `WriteResult` - 10 edges
 7. `buildUriMessage()` - 10 edges
 8. `NdefWriterTest` - 10 edges
 9. `/graphify` - 10 edges
@@ -135,14 +136,14 @@
 ## Surprising Connections (you probably didn't know these)
 - `Legacy Node.js Release Workflow Template` --semantically_similar_to--> `CI publish job (tag + GitHub Release)`  [INFERRED] [semantically similar]
   references/gh-release.yml → .github/workflows/release.yml
-- `MainActivity` --references--> `NfcController`  [EXTRACTED]
-  app/src/main/java/hu/vb2007/nfctool/MainActivity.kt → app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt
-- `NfcStatusBanner()` --references--> `NfcAdapterState`  [EXTRACTED]
-  app/src/main/java/hu/vb2007/nfctool/ui/components/NfcStatusBanner.kt → app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt
-- `ReadViewModel` --references--> `NfcAdapterState`  [EXTRACTED]
-  app/src/main/java/hu/vb2007/nfctool/ui/read/ReadViewModel.kt → app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt
-- `WriteViewModel` --references--> `NfcAdapterState`  [EXTRACTED]
-  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteViewModel.kt → app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt
+- `EditingContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `RecordTypeSelector()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `ResultContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `WaitingForTagContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
 
 ## Import Cycles
 - None detected.
@@ -150,7 +151,7 @@
 ## Hyperedges (group relationships)
 - **Release CI/CD Pipeline (test -> build -> publish)** — _github_workflows_release_test_job, _github_workflows_release_build_job, _github_workflows_release_publish_job [EXTRACTED 1.00]
 
-## Communities (110 total, 82 thin omitted)
+## Communities (111 total, 82 thin omitted)
 
 ### Community 0 - "NFC Controller & State"
 Cohesion: 0.15
@@ -161,24 +162,24 @@ Cohesion: 0.20
 Nodes (5): MainActivity, Boolean, NfcToolTheme(), Bundle, ComponentActivity
 
 ### Community 3 - "NDEF Write Path"
-Cohesion: 0.18
-Nodes (22): Error, ReadOnly, Success, TagLost, TooLarge, WriteResult, buildEmailMessage(), buildSmsMessage() (+14 more)
+Cohesion: 0.22
+Nodes (12): Error, LockFailed, ReadOnly, Success, TagLost, TooLarge, WriteResult, Boolean (+4 more)
 
 ### Community 4 - "NDEF Parsing & Model"
 Cohesion: 0.10
 Nodes (12): NdefRecordKind, NdefRecordModel, decodeTextPayload(), decodeUriPayload(), decodeVCardPayload(), ByteArray, List, NdefMessage (+4 more)
 
 ### Community 5 - "Read Screen UI"
-Cohesion: 0.09
-Nodes (33): Text, TagInfo, Modifier, NfcStatusBanner(), ActionCard(), HomeScreen(), String, AppBottomBar() (+25 more)
+Cohesion: 0.11
+Nodes (23): Text, TagInfo, Modifier, NfcStatusBanner(), ActionCard(), HomeScreen(), String, AppBottomBar() (+15 more)
 
 ### Community 6 - "v1 Plan & Locked Decisions"
 Cohesion: 0.08
 Nodes (22): AGP 9 build-config gotchas (already handled in `gradle.properties`, documented here so they aren't "fixed" again by accident), Architecture, CI / Releases, Commands, Development environment, graphify, Locked decisions (do not re-litigate without asking), Project status (+14 more)
 
 ### Community 7 - "Write ViewModel"
-Cohesion: 0.21
-Nodes (10): Editing, Failure, isValid(), Boolean, StateFlow, Success, toPayload(), WaitingForTag (+2 more)
+Cohesion: 0.16
+Nodes (18): EditingContent(), Boolean, Modifier, String, label(), RecordTypeSelector(), ResultContent(), successMessage() (+10 more)
 
 ### Community 9 - "Tag Type Detection"
 Cohesion: 0.30
@@ -204,9 +205,13 @@ Nodes (5): Error, ScanResult, Success, Tag, TagReader
 Cohesion: 0.53
 Nodes (5): HomeRoute, ReadRoute, SettingsRoute, WriteRoute, NavKey
 
+### Community 37 - "buildUriMessage"
+Cohesion: 0.45
+Nodes (12): buildEmailMessage(), buildSmsMessage(), buildTelMessage(), buildTextMessage(), buildUriMessage(), buildVCardMessage(), buildVCardText(), encodeUri() (+4 more)
+
 ### Community 38 - "NdefPayload"
-Cohesion: 0.52
-Nodes (6): Contact, Email, NdefPayload, Sms, Tel, Uri
+Cohesion: 0.23
+Nodes (10): Contact, Email, NdefPayload, Sms, Tel, Uri, WriteRequest, isValid() (+2 more)
 
 ### Community 39 - "ADB & USB Debugging"
 Cohesion: 0.15
@@ -248,17 +253,17 @@ Nodes (3): Build, Building a Release Package, Current status: unsigned
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Text` connect `Read Screen UI` to `NdefPayload`?**
-  _High betweenness centrality (0.075) - this node is a cross-community bridge._
-- **Why does `NdefPayload` connect `NdefPayload` to `NFC Controller & State`, `NDEF Write Path`, `Read Screen UI`, `Write ViewModel`?**
-  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Why does `Text` connect `Read Screen UI` to `NdefPayload`, `Write ViewModel`?**
+  _High betweenness centrality (0.076) - this node is a cross-community bridge._
+- **Why does `NdefRecordModel` connect `NDEF Parsing & Model` to `Read Screen UI`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Why does `NdefRecordRow()` connect `Read Screen UI` to `NDEF Parsing & Model`?**
-  _High betweenness centrality (0.036) - this node is a cross-community bridge._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
 - **Are the 17 inferred relationships involving `Text` (e.g. with `NfcStatusBanner()` and `ActionCard()`) actually correct?**
   _`Text` has 17 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `NdefRecordKind`, `graphify`, `Usage` to the rest of the system?**
   _149 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `NFC Controller & State` be split into smaller, more focused modules?**
-  _Cohesion score 0.14624505928853754 - nodes in this community are weakly interconnected._
 - **Should `NDEF Parsing & Model` be split into smaller, more focused modules?**
   _Cohesion score 0.09885057471264368 - nodes in this community are weakly interconnected._
+- **Should `Read Screen UI` be split into smaller, more focused modules?**
+  _Cohesion score 0.10752688172043011 - nodes in this community are weakly interconnected._

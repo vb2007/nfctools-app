@@ -95,9 +95,9 @@
     "semantic_hash": "ba97b18ccf4727de3634485aea709bd1"
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt": {
-    "mtime": 1783023632.5562546,
-    "ast_hash": "941ba4f17f2126952bd035233cd61f00",
-    "semantic_hash": "941ba4f17f2126952bd035233cd61f00"
+    "mtime": 1783630214.5729682,
+    "ast_hash": "efefd92922ae8728d64d4f3da311e25e",
+    "semantic_hash": ""
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/navigation/Destinations.kt": {
     "mtime": 1783023632.5562546,

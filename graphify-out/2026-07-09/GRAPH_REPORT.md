@@ -1,12 +1,18 @@
-# Graph Report - .  (2026-07-05)
+# Graph Report - nfctools-app  (2026-07-09)
 
 ## Corpus Check
-- Corpus is ~20,156 words - fits in a single context window. You may not need a graph.
+- 57 files · ~21,670 words
+- Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 283 nodes · 352 edges · 37 communities (25 shown, 12 thin omitted)
-- Extraction: 93% EXTRACTED · 7% INFERRED · 0% AMBIGUOUS · INFERRED: 24 edges (avg confidence: 0.81)
-- Token cost: 0 input · 128,516 output
+- 429 nodes · 492 edges · 111 communities (29 shown, 82 thin omitted)
+- Extraction: 92% EXTRACTED · 8% INFERRED · 0% AMBIGUOUS · INFERRED: 39 edges (avg confidence: 0.8)
+- Token cost: 0 input · 0 output
+
+## Graph Freshness
+- Built from commit: `584af5ea`
+- Run `git rev-parse HEAD` and compare to check if the graph is stale.
+- Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - [[_COMMUNITY_NFC Controller & State|NFC Controller & State]]
@@ -40,76 +46,140 @@
 - [[_COMMUNITY_Graphify Fast-Path Shortcut|Graphify Fast-Path Shortcut]]
 - [[_COMMUNITY_Graphify Install Check|Graphify Install Check]]
 - [[_COMMUNITY_AGP9 Build Gotchas|AGP9 Build Gotchas]]
+- [[_COMMUNITY_buildUriMessage|buildUriMessage]]
+- [[_COMMUNITY_NdefPayload|NdefPayload]]
+- [[_COMMUNITY_ADB & USB Debugging|ADB & USB Debugging]]
+- [[_COMMUNITY_graphify reference extra exports and benchmark|graphify reference: extra exports and benchmark]]
+- [[_COMMUNITY_graphify reference query, path, explain|graphify reference: query, path, explain]]
+- [[_COMMUNITY_Self-Hosted Runner Setup (Debian 12)|Self-Hosted Runner Setup (Debian 12)]]
+- [[_COMMUNITY_graphify reference add a URL and watch a folder|graphify reference: add a URL and watch a folder]]
+- [[_COMMUNITY_graphify reference commit hook and native CLAUDE.md integration|graphify reference: commit hook and native CLAUDE.md integration]]
+- [[_COMMUNITY_graphify reference incremental update and cluster-only|graphify reference: incremental update and cluster-only]]
+- [[_COMMUNITY_Building a Release Package|Building a Release Package]]
+- [[_COMMUNITY_graphify reference GitHub clone and cross-repo merge|graphify reference: GitHub clone and cross-repo merge]]
+- [[_COMMUNITY_graphify reference transcribe video and audio|graphify reference: transcribe video and audio]]
+- [[_COMMUNITY_graphify|graphify]]
+- [[_COMMUNITY_extraction-spec|extraction-spec.md]]
+- [[_COMMUNITY_README|README.md]]
+- [[_COMMUNITY_--watch (folder watcher)|--watch (folder watcher)]]
+- [[_COMMUNITY_FalkorDB Export|FalkorDB Export]]
+- [[_COMMUNITY_MCP Server (graphify.serve)|MCP Server (graphify.serve)]]
+- [[_COMMUNITY_Neo4j Export|Neo4j Export]]
+- [[_COMMUNITY_SVG  GraphML Export|SVG / GraphML Export]]
+- [[_COMMUNITY_Wiki Export (--wiki)|Wiki Export (--wiki)]]
+- [[_COMMUNITY_Confidence Score Rubric|Confidence Score Rubric]]
+- [[_COMMUNITY_Node ID Format Convention|Node ID Format Convention]]
+- [[_COMMUNITY_Extraction Subagent Prompt Template|Extraction Subagent Prompt Template]]
+- [[_COMMUNITY_graphify merge-graphs|graphify merge-graphs]]
+- [[_COMMUNITY_graphify claude install (CLAUDE.md integration)|graphify claude install (CLAUDE.md integration)]]
+- [[_COMMUNITY_graphify hook install (post-commit auto-rebuild)|graphify hook install (post-commit auto-rebuild)]]
+- [[_COMMUNITY_BFSDFS Graph Traversal|BFS/DFS Graph Traversal]]
+- [[_COMMUNITY_Constrained Query Vocabulary Expansion|Constrained Query Vocabulary Expansion]]
+- [[_COMMUNITY_--cluster-only|--cluster-only]]
+- [[_COMMUNITY_Incremental --update|Incremental --update]]
+- [[_COMMUNITY_graphify explain|/graphify explain]]
+- [[_COMMUNITY_Part A Structural (AST) Extraction|Part A: Structural (AST) Extraction]]
+- [[_COMMUNITY_Part B Semantic Extraction (Subagents)|Part B: Semantic Extraction (Subagents)]]
+- [[_COMMUNITY_Part C Merge AST + Semantic|Part C: Merge AST + Semantic]]
+- [[_COMMUNITY_graphify path|/graphify path]]
+- [[_COMMUNITY_Graphify Pipeline (graphify)|Graphify Pipeline (/graphify)]]
+- [[_COMMUNITY_graphify query|/graphify query]]
+- [[_COMMUNITY_Step 0 GitHub URL  Multi-path Merge|Step 0: GitHub URL / Multi-path Merge]]
+- [[_COMMUNITY_Step 2.5 Video and Audio Transcription|Step 2.5: Video and Audio Transcription]]
+- [[_COMMUNITY_Step 2 Detect Files|Step 2: Detect Files]]
+- [[_COMMUNITY_Step 3 Extract Entities and Relationships|Step 3: Extract Entities and Relationships]]
+- [[_COMMUNITY_Step 4.5 Graph Health Check|Step 4.5: Graph Health Check]]
+- [[_COMMUNITY_Step 4 Build Graph, Cluster, Analyze|Step 4: Build Graph, Cluster, Analyze]]
+- [[_COMMUNITY_Step 5 Label Communities|Step 5: Label Communities]]
+- [[_COMMUNITY_Step 6 Obsidian Vault + HTML Export|Step 6: Obsidian Vault + HTML Export]]
+- [[_COMMUNITY_Step 9 Manifest, Cost Tracker, Cleanup|Step 9: Manifest, Cost Tracker, Cleanup]]
+- [[_COMMUNITY_CI build job (debug + unsigned-release APKs)|CI build job (debug + unsigned-release APKs)]]
+- [[_COMMUNITY_Promote Existing Pre-release on Main Merge|Promote Existing Pre-release on Main Merge]]
+- [[_COMMUNITY_CI test job (unit tests + lint)|CI test job (unit tests + lint)]]
+- [[_COMMUNITY_Architecture Summary|Architecture Summary]]
+- [[_COMMUNITY_Graphify Always-On Trigger Instruction|Graphify Always-On Trigger Instruction]]
+- [[_COMMUNITY_Development Environment Constraints|Development Environment Constraints]]
+- [[_COMMUNITY_graphify Usage Rules (root CLAUDE.md)|graphify Usage Rules (root CLAUDE.md)]]
+- [[_COMMUNITY_Locked Decisions (do not re-litigate)|Locked Decisions (do not re-litigate)]]
+- [[_COMMUNITY_Dropbox Crash Log Diagnosis|Dropbox Crash Log Diagnosis]]
+- [[_COMMUNITY_Unsigned Release APK Build + Debug-Signing Workaround|Unsigned Release APK Build + Debug-Signing Workaround]]
+- [[_COMMUNITY_installDebug Build+Install Workflow|installDebug Build+Install Workflow]]
+- [[_COMMUNITY_Android SDK Runner Install|Android SDK Runner Install]]
+- [[_COMMUNITY_Runner Service .env Wiring|Runner Service .env Wiring]]
+- [[_COMMUNITY_JDK 21 Runner Install (TemurinAdoptium)|JDK 21 Runner Install (Temurin/Adoptium)]]
+- [[_COMMUNITY_Decisions Locked with the User|Decisions Locked with the User]]
+- [[_COMMUNITY_MainActivity|MainActivity]]
+- [[_COMMUNITY_NdefParser|NdefParser]]
+- [[_COMMUNITY_NdefTextWriter|NdefTextWriter]]
+- [[_COMMUNITY_NFC Reader-Mode Architecture|NFC Reader-Mode Architecture]]
+- [[_COMMUNITY_NfcController|NfcController]]
+- [[_COMMUNITY_Out of Scope for v1|Out of Scope for v1]]
+- [[_COMMUNITY_TagReader|TagReader]]
+- [[_COMMUNITY_TagTypeDetector|TagTypeDetector]]
+- [[_COMMUNITY_UltralightDumpReader|UltralightDumpReader]]
+- [[_COMMUNITY_Verification Plan (buildunit-teston-device)|Verification Plan (build/unit-test/on-device)]]
+- [[_COMMUNITY_Write Flow (v1, plain-text NDEF)|Write Flow (v1, plain-text NDEF)]]
+- [[_COMMUNITY_nfctools-app Project Description|nfctools-app Project Description]]
 
 ## God Nodes (most connected - your core abstractions)
-1. `NfcController` - 16 edges
-2. `WriteViewModel` - 11 edges
-3. `TagTypeDetectorTest` - 11 edges
-4. `WriteResult` - 9 edges
-5. `Graphify Pipeline (/graphify)` - 9 edges
-6. `ReadViewModel` - 8 edges
-7. `Step 6: Obsidian Vault + HTML Export` - 8 edges
-8. `Architecture Summary` - 8 edges
-9. `TagType` - 7 edges
-10. `AppRoot()` - 7 edges
+1. `Text` - 19 edges
+2. `NfcController` - 16 edges
+3. `What You Must Do When Invoked` - 12 edges
+4. `WriteViewModel` - 11 edges
+5. `TagTypeDetectorTest` - 11 edges
+6. `WriteResult` - 10 edges
+7. `buildUriMessage()` - 10 edges
+8. `NdefWriterTest` - 10 edges
+9. `/graphify` - 10 edges
+10. `Advanced NFC Tools — v1 Implementation Plan` - 10 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Legacy Node.js Release Workflow Template` --semantically_similar_to--> `CI publish job (tag + GitHub Release)`  [INFERRED] [semantically similar]
   references/gh-release.yml → .github/workflows/release.yml
-- `CI / Releases (release.yml summary)` --shares_data_with--> `Android SDK Runner Install`  [INFERRED]
-  CLAUDE.md → docs/self-hosted-runner-setup.md
-- `CI / Releases (release.yml summary)` --shares_data_with--> `Runner Service .env Wiring`  [INFERRED]
-  CLAUDE.md → docs/self-hosted-runner-setup.md
-- `graphify Usage Rules (root CLAUDE.md)` --references--> `Graphify Pipeline (/graphify)`  [EXTRACTED]
-  CLAUDE.md → .claude/skills/graphify/SKILL.md
-- `CI / Releases (release.yml summary)` --references--> `CI test job (unit tests + lint)`  [EXTRACTED]
-  CLAUDE.md → .github/workflows/release.yml
+- `EditingContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `RecordTypeSelector()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `ResultContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
+- `WaitingForTagContent()` --calls--> `Text`  [INFERRED]
+  app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt → app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt
 
 ## Import Cycles
 - None detected.
 
 ## Hyperedges (group relationships)
-- **Graphify Extraction Pipeline (Detect -> AST -> Semantic -> Merge -> Build)** — _claude_skills_graphify_skill_step2_detect_files, _claude_skills_graphify_skill_part_a_ast, _claude_skills_graphify_skill_part_b_semantic, _claude_skills_graphify_skill_part_c_merge, _claude_skills_graphify_skill_step4_build_graph [EXTRACTED 1.00]
-- **NFC Core Architecture Components (v1 Plan)** — planning_v1_plan_nfccontroller, planning_v1_plan_tagreader, planning_v1_plan_ndefparser, planning_v1_plan_tagtypedetector, planning_v1_plan_ndeftextwriter, planning_v1_plan_ultralightdumpreader, planning_v1_plan_mainactivity [EXTRACTED 1.00]
 - **Release CI/CD Pipeline (test -> build -> publish)** — _github_workflows_release_test_job, _github_workflows_release_build_job, _github_workflows_release_publish_job [EXTRACTED 1.00]
 
-## Communities (37 total, 12 thin omitted)
+## Communities (111 total, 82 thin omitted)
 
 ### Community 0 - "NFC Controller & State"
-Cohesion: 0.14
-Nodes (15): Activity, Idle, StateFlow, String, Tag, NfcAdapterState, NfcController, NfcEvent (+7 more)
+Cohesion: 0.15
+Nodes (14): Activity, Idle, StateFlow, Tag, NfcAdapterState, NfcController, NfcEvent, NfcIntent (+6 more)
 
 ### Community 1 - "App Shell & Navigation"
-Cohesion: 0.10
-Nodes (12): MainActivity, ActionCard(), HomeScreen(), String, AppBottomBar(), NavKey, AppRoot(), SettingsScreen() (+4 more)
-
-### Community 2 - "Graphify Extraction Pipeline"
-Cohesion: 0.11
-Nodes (19): Token Reduction Benchmark, FalkorDB Export, MCP Server (graphify.serve), Neo4j Export, SVG / GraphML Export, Wiki Export (--wiki), Confidence Score Rubric, Node ID Format Convention (+11 more)
+Cohesion: 0.20
+Nodes (5): MainActivity, Boolean, NfcToolTheme(), Bundle, ComponentActivity
 
 ### Community 3 - "NDEF Write Path"
-Cohesion: 0.18
-Nodes (14): Error, ReadOnly, Success, TagLost, TooLarge, WriteResult, buildTextMessage(), NdefMessage (+6 more)
+Cohesion: 0.22
+Nodes (12): Error, LockFailed, ReadOnly, Success, TagLost, TooLarge, WriteResult, Boolean (+4 more)
 
 ### Community 4 - "NDEF Parsing & Model"
-Cohesion: 0.16
-Nodes (10): NdefRecordKind, NdefRecordModel, decodeTextPayload(), decodeUriPayload(), ByteArray, List, NdefMessage, String (+2 more)
+Cohesion: 0.10
+Nodes (12): NdefRecordKind, NdefRecordModel, decodeTextPayload(), decodeUriPayload(), decodeVCardPayload(), ByteArray, List, NdefMessage (+4 more)
 
 ### Community 5 - "Read Screen UI"
-Cohesion: 0.19
-Nodes (13): TagInfo, HexDumpSection(), List, Modifier, String, ErrorView(), Modifier, String (+5 more)
+Cohesion: 0.11
+Nodes (23): Text, TagInfo, Modifier, NfcStatusBanner(), ActionCard(), HomeScreen(), String, AppBottomBar() (+15 more)
 
 ### Community 6 - "v1 Plan & Locked Decisions"
-Cohesion: 0.20
-Nodes (15): Architecture Summary, Locked Decisions (do not re-litigate), Decisions Locked with the User, MainActivity, NdefParser, NdefTextWriter, NFC Reader-Mode Architecture, NfcController (+7 more)
+Cohesion: 0.08
+Nodes (22): AGP 9 build-config gotchas (already handled in `gradle.properties`, documented here so they aren't "fixed" again by accident), Architecture, CI / Releases, Commands, Development environment, graphify, Locked decisions (do not re-litigate without asking), Project status (+14 more)
 
 ### Community 7 - "Write ViewModel"
-Cohesion: 0.24
-Nodes (8): Editing, Failure, StateFlow, String, Success, WaitingForTag, WriteUiState, WriteViewModel
-
-### Community 8 - "CI/Release Pipeline"
-Cohesion: 0.20
-Nodes (12): CI build job (debug + unsigned-release APKs), Promote Existing Pre-release on Main Merge, CI publish job (tag + GitHub Release), CI test job (unit tests + lint), CI / Releases (release.yml summary), Development Environment Constraints, Dropbox Crash Log Diagnosis, Unsigned Release APK Build + Debug-Signing Workaround (+4 more)
+Cohesion: 0.16
+Nodes (18): EditingContent(), Boolean, Modifier, String, label(), RecordTypeSelector(), ResultContent(), successMessage() (+10 more)
 
 ### Community 9 - "Tag Type Detection"
 Cohesion: 0.30
@@ -120,12 +190,8 @@ Cohesion: 0.29
 Nodes (8): formatPage(), ByteArray, Int, List, String, Tag, UltralightDumpReader, MifareUltralight
 
 ### Community 12 - "Write Screen UI"
-Cohesion: 0.29
-Nodes (9): Modifier, NfcStatusBanner(), EditingContent(), Boolean, Modifier, String, ResultContent(), WaitingForTagContent() (+1 more)
-
-### Community 13 - "Graphify Maintenance & Rules"
-Cohesion: 0.22
-Nodes (10): /graphify add <url>, --watch (folder watcher), graphify claude install (CLAUDE.md integration), graphify hook install (post-commit auto-rebuild), --cluster-only, Incremental --update, Honesty Rules, Graphify Pipeline (/graphify) (+2 more)
+Cohesion: 0.08
+Nodes (24): For /graphify add and --watch, For /graphify query, For the commit hook and native CLAUDE.md integration, For --update and --cluster-only, /graphify, Honesty Rules, Interpreter guard for subcommands, Part A - Structural extraction for code files (+16 more)
 
 ### Community 14 - "Read ViewModel"
 Cohesion: 0.29
@@ -139,37 +205,65 @@ Nodes (5): Error, ScanResult, Success, Tag, TagReader
 Cohesion: 0.53
 Nodes (5): HomeRoute, ReadRoute, SettingsRoute, WriteRoute, NavKey
 
-### Community 18 - "Graphify Query Command"
+### Community 37 - "buildUriMessage"
+Cohesion: 0.45
+Nodes (12): buildEmailMessage(), buildSmsMessage(), buildTelMessage(), buildTextMessage(), buildUriMessage(), buildVCardMessage(), buildVCardText(), encodeUri() (+4 more)
+
+### Community 38 - "NdefPayload"
+Cohesion: 0.23
+Nodes (10): Contact, Email, NdefPayload, Sms, Tel, Uri, WriteRequest, isValid() (+2 more)
+
+### Community 39 - "ADB & USB Debugging"
+Cohesion: 0.15
+Nodes (11): ADB & USB Debugging, Connect, Diagnosing a crash, Launch / stop the app manually, Mirror the screen (to watch the UI while tapping tags with your other hand), Uninstall, Watch app logs, Build + install in one step (recommended) (+3 more)
+
+### Community 40 - "graphify reference: extra exports and benchmark"
+Cohesion: 0.22
+Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
+
+### Community 41 - "graphify reference: query, path, explain"
+Cohesion: 0.33
+Nodes (5): For /graphify explain, For /graphify path, graphify reference: query, path, explain, Step 0 — Constrained query expansion (REQUIRED before traversal), Step 1 — Traversal
+
+### Community 42 - "Self-Hosted Runner Setup (Debian 12)"
+Cohesion: 0.40
+Nodes (4): 1. JDK 21, 2. Android SDK, 3. Wire it into the runner service, Self-Hosted Runner Setup (Debian 12)
+
+### Community 43 - "graphify reference: add a URL and watch a folder"
 Cohesion: 0.50
-Nodes (4): save-result Feedback Loop, BFS/DFS Graph Traversal, Constrained Query Vocabulary Expansion, /graphify query
+Nodes (3): For /graphify add, For --watch, graphify reference: add a URL and watch a folder
 
-### Community 21 - "Graphify GitHub Clone & Merge"
-Cohesion: 0.67
-Nodes (3): graphify clone, graphify merge-graphs, Step 0: GitHub URL / Multi-path Merge
+### Community 44 - "graphify reference: commit hook and native CLAUDE.md integration"
+Cohesion: 0.50
+Nodes (3): For git commit hook, For native CLAUDE.md integration, graphify reference: commit hook and native CLAUDE.md integration
 
-### Community 23 - "Testing & Build Order Notes"
-Cohesion: 0.67
-Nodes (3): Testing Notes (Robolectric / emulator limits), Suggested Build Order, Verification Plan (build/unit-test/on-device)
+### Community 45 - "graphify reference: incremental update and cluster-only"
+Cohesion: 0.50
+Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphify reference: incremental update and cluster-only
+
+### Community 46 - "Building a Release Package"
+Cohesion: 0.50
+Nodes (3): Build, Building a Release Package, Current status: unsigned
 
 ## Knowledge Gaps
-- **39 isolated node(s):** `NdefRecordKind`, `Fast Path for Existing Graph`, `Step 1: Ensure Graphify Installed`, `Step 2: Detect Files`, `Step 2.5: Video and Audio Transcription` (+34 more)
+- **140 isolated node(s):** `NdefRecordKind`, `graphify`, `Usage`, `What graphify is for`, `Step 0 - GitHub repos and multi-path merge (only if a URL or several paths)` (+135 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **82 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ReadScreen()` connect `Read Screen UI` to `App Shell & Navigation`, `Write Screen UI`, `Read ViewModel`?**
-  _High betweenness centrality (0.126) - this node is a cross-community bridge._
-- **Why does `NdefRecordRow()` connect `Read Screen UI` to `NDEF Parsing & Model`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
+- **Why does `Text` connect `Read Screen UI` to `NdefPayload`, `Write ViewModel`?**
+  _High betweenness centrality (0.076) - this node is a cross-community bridge._
 - **Why does `NdefRecordModel` connect `NDEF Parsing & Model` to `Read Screen UI`?**
-  _High betweenness centrality (0.094) - this node is a cross-community bridge._
-- **What connects `NdefRecordKind`, `Graphify Always-On Trigger Instruction`, `Fast Path for Existing Graph` to the rest of the system?**
-  _47 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `NFC Controller & State` be split into smaller, more focused modules?**
-  _Cohesion score 0.13768115942028986 - nodes in this community are weakly interconnected._
-- **Should `App Shell & Navigation` be split into smaller, more focused modules?**
-  _Cohesion score 0.1 - nodes in this community are weakly interconnected._
-- **Should `Graphify Extraction Pipeline` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `NdefRecordRow()` connect `Read Screen UI` to `NDEF Parsing & Model`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Are the 17 inferred relationships involving `Text` (e.g. with `NfcStatusBanner()` and `ActionCard()`) actually correct?**
+  _`Text` has 17 INFERRED edges - model-reasoned connections that need verification._
+- **What connects `NdefRecordKind`, `graphify`, `Usage` to the rest of the system?**
+  _149 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `NDEF Parsing & Model` be split into smaller, more focused modules?**
+  _Cohesion score 0.09885057471264368 - nodes in this community are weakly interconnected._
+- **Should `Read Screen UI` be split into smaller, more focused modules?**
+  _Cohesion score 0.10752688172043011 - nodes in this community are weakly interconnected._

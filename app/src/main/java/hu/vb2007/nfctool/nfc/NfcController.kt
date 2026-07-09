@@ -6,9 +6,10 @@ import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.os.Bundle
 import hu.vb2007.nfctool.nfc.model.ScanResult
+import hu.vb2007.nfctool.nfc.model.WriteRequest
 import hu.vb2007.nfctool.nfc.model.WriteResult
 import hu.vb2007.nfctool.nfc.read.TagReader
-import hu.vb2007.nfctool.nfc.write.NdefTextWriter
+import hu.vb2007.nfctool.nfc.write.NdefWriter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -25,7 +26,7 @@ enum class NfcAdapterState { NO_HARDWARE, DISABLED, READY }
 private sealed interface NfcIntent {
     data object Idle : NfcIntent
     data object Reading : NfcIntent
-    data class Writing(val text: String) : NfcIntent
+    data class Writing(val request: WriteRequest) : NfcIntent
 }
 
 sealed interface NfcEvent {
@@ -36,7 +37,7 @@ sealed interface NfcEvent {
 class NfcController(
     context: Context,
     private val tagReader: TagReader,
-    private val ndefTextWriter: NdefTextWriter,
+    private val ndefWriter: NdefWriter,
 ) : NfcAdapter.ReaderCallback {
 
     private val appContext = context.applicationContext
@@ -56,8 +57,8 @@ class NfcController(
         intent = NfcIntent.Reading
     }
 
-    fun startWriting(text: String) {
-        intent = NfcIntent.Writing(text)
+    fun startWriting(request: WriteRequest) {
+        intent = NfcIntent.Writing(request)
     }
 
     fun goIdle() {
@@ -88,7 +89,7 @@ class NfcController(
                 _events.emit(NfcEvent.ReadCompleted(tagReader.read(tag)))
             }
             is NfcIntent.Writing -> scope.launch {
-                _events.emit(NfcEvent.WriteCompleted(ndefTextWriter.write(tag, current.text)))
+                _events.emit(NfcEvent.WriteCompleted(ndefWriter.write(tag, current.request)))
             }
             NfcIntent.Idle -> Unit
         }

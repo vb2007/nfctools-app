@@ -1,6 +1,6 @@
 {
   ".claude/settings.json": {
-    "mtime": 1783621820.1082587,
+    "mtime": 1783242763.089378,
     "ast_hash": "e51077b6a7f1f67afc748f1a32a1557d",
     "semantic_hash": "e51077b6a7f1f67afc748f1a32a1557d"
   },
@@ -10,9 +10,9 @@
     "semantic_hash": "43b5c5e06d5b4b4f75e500bfcf41e3bf"
   },
   "app/build.gradle.kts": {
-    "mtime": 1783623410.732481,
-    "ast_hash": "efb05d90e1762062811adcdae0f64c5b",
-    "semantic_hash": ""
+    "mtime": 1783242249.4683418,
+    "ast_hash": "af72a044e473dc698dcf39ed48787ec3",
+    "semantic_hash": "af72a044e473dc698dcf39ed48787ec3"
   },
   "app/src/main/java/hu/vb2007/nfctool/MainActivity.kt": {
     "mtime": 1783023632.5559537,
@@ -25,19 +25,19 @@
     "semantic_hash": "469b3fa765a3baa3fdd8e23d6dcbabcd"
   },
   "app/src/main/java/hu/vb2007/nfctool/di/AppModule.kt": {
-    "mtime": 1783623176.8828669,
-    "ast_hash": "688cf1c97366402a4a693f926f8de1b9",
-    "semantic_hash": ""
+    "mtime": 1783023659.657979,
+    "ast_hash": "3f7ab237b6e709d7c5b5dd984466007e",
+    "semantic_hash": "3f7ab237b6e709d7c5b5dd984466007e"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/NfcController.kt": {
-    "mtime": 1783623161.8152478,
-    "ast_hash": "765d2092edc68ada9f8912e9c06fa932",
-    "semantic_hash": ""
+    "mtime": 1783023632.5559855,
+    "ast_hash": "ecc68ee13669aa2ef5e4fbf09e94ae6b",
+    "semantic_hash": "ecc68ee13669aa2ef5e4fbf09e94ae6b"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefRecordModel.kt": {
-    "mtime": 1783622934.0879045,
-    "ast_hash": "2850a562af47e8d8c6197a8c6e836856",
-    "semantic_hash": ""
+    "mtime": 1783023632.5560405,
+    "ast_hash": "fd0dfff2e3a3364582de84eca691481c",
+    "semantic_hash": "fd0dfff2e3a3364582de84eca691481c"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/ScanResult.kt": {
     "mtime": 1783023632.5560548,
@@ -55,14 +55,14 @@
     "semantic_hash": "756b125afafed2fe33b0ebe51c3f149a"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/model/WriteResult.kt": {
-    "mtime": 1783622929.048698,
-    "ast_hash": "1f1e8e1f7996ffc30187abd7847f5d1d",
-    "semantic_hash": ""
+    "mtime": 1783023632.5560548,
+    "ast_hash": "6e5264eba206ee7cb3d5809d6cd6d38e",
+    "semantic_hash": "6e5264eba206ee7cb3d5809d6cd6d38e"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/read/NdefParser.kt": {
-    "mtime": 1783622965.332185,
-    "ast_hash": "06928961ac22480d2376c46d0bb3537c",
-    "semantic_hash": ""
+    "mtime": 1783023632.5560548,
+    "ast_hash": "847f48a23e26ab1f107eb4187877ec52",
+    "semantic_hash": "847f48a23e26ab1f107eb4187877ec52"
   },
   "app/src/main/java/hu/vb2007/nfctool/nfc/read/TagReader.kt": {
     "mtime": 1783023632.5561225,
@@ -78,6 +78,11 @@
     "mtime": 1783023632.5561225,
     "ast_hash": "5591e9052216c29559b43b949a3c110a",
     "semantic_hash": "5591e9052216c29559b43b949a3c110a"
+  },
+  "app/src/main/java/hu/vb2007/nfctool/nfc/write/NdefTextWriter.kt": {
+    "mtime": 1783023632.5561225,
+    "ast_hash": "6c7024d61b568c60e3ae2b400103aa77",
+    "semantic_hash": "6c7024d61b568c60e3ae2b400103aa77"
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/components/NfcStatusBanner.kt": {
     "mtime": 1783023632.5561917,
@@ -145,14 +150,14 @@
     "semantic_hash": "aa43e16d63e8b27381b79db0e33c1a68"
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteScreen.kt": {
-    "mtime": 1783623286.4553697,
-    "ast_hash": "df6823194f22bfb0fcbcd903dec7664a",
-    "semantic_hash": ""
+    "mtime": 1783023632.556374,
+    "ast_hash": "3c51e3a3b3e8dca106398afd14f08792",
+    "semantic_hash": "3c51e3a3b3e8dca106398afd14f08792"
   },
   "app/src/main/java/hu/vb2007/nfctool/ui/write/WriteViewModel.kt": {
-    "mtime": 1783623231.6891186,
-    "ast_hash": "9ed5c5868208b1cf86688c8ec4d53231",
-    "semantic_hash": ""
+    "mtime": 1783023632.556418,
+    "ast_hash": "5d8ffd0e8aea7caf25cdfa18d22a0911",
+    "semantic_hash": "5d8ffd0e8aea7caf25cdfa18d22a0911"
   },
   "app/src/test/java/hu/vb2007/nfctool/nfc/read/NdefParserTest.kt": {
     "mtime": 1783023632.556554,
@@ -168,6 +173,11 @@
     "mtime": 1783023632.556582,
     "ast_hash": "e5eeab06a06c96167e7cfa544f1c35c3",
     "semantic_hash": "e5eeab06a06c96167e7cfa544f1c35c3"
+  },
+  "app/src/test/java/hu/vb2007/nfctool/nfc/write/NdefTextWriterTest.kt": {
+    "mtime": 1783023632.556582,
+    "ast_hash": "6a04e629f6f96878f205deab372dbba6",
+    "semantic_hash": "6a04e629f6f96878f205deab372dbba6"
   },
   "build.gradle.kts": {
     "mtime": 1783023632.556582,
@@ -185,52 +195,52 @@
     "semantic_hash": "f01005a2bca5a3c5dddced4ffc85d419"
   },
   ".claude/CLAUDE.md": {
-    "mtime": 1783264883.7340763,
+    "mtime": 1783242763.0891352,
     "ast_hash": "9b31786b637be3c13978bec4c2330752",
     "semantic_hash": "9b31786b637be3c13978bec4c2330752"
   },
   ".claude/skills/graphify/SKILL.md": {
-    "mtime": 1783264883.734545,
+    "mtime": 1783242763.0890536,
     "ast_hash": "1e48e0226c5b26741c54209a51c94454",
     "semantic_hash": "1e48e0226c5b26741c54209a51c94454"
   },
   ".claude/skills/graphify/references/add-watch.md": {
-    "mtime": 1783264883.734545,
+    "mtime": 1783242736.6215723,
     "ast_hash": "d59d027fe449f06aa03905a01184e779",
     "semantic_hash": "d59d027fe449f06aa03905a01184e779"
   },
   ".claude/skills/graphify/references/exports.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.6215723,
     "ast_hash": "9da2a2152e60a22f07f05fed5158f287",
     "semantic_hash": "9da2a2152e60a22f07f05fed5158f287"
   },
   ".claude/skills/graphify/references/extraction-spec.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.6215723,
     "ast_hash": "42fef56a01698118f7fd722acdadea34",
     "semantic_hash": "42fef56a01698118f7fd722acdadea34"
   },
   ".claude/skills/graphify/references/github-and-merge.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.6215723,
     "ast_hash": "cde13df085e4c492aeb7ba298a996d0d",
     "semantic_hash": "cde13df085e4c492aeb7ba298a996d0d"
   },
   ".claude/skills/graphify/references/hooks.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.622535,
     "ast_hash": "3f545db6ce646650bb9de588f5512a27",
     "semantic_hash": "3f545db6ce646650bb9de588f5512a27"
   },
   ".claude/skills/graphify/references/query.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.622535,
     "ast_hash": "3c46f8ad006874260614ed8657d02307",
     "semantic_hash": "3c46f8ad006874260614ed8657d02307"
   },
   ".claude/skills/graphify/references/transcribe.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.6235352,
     "ast_hash": "67b6a5fa6c0974e18f60db9f8932fbd8",
     "semantic_hash": "67b6a5fa6c0974e18f60db9f8932fbd8"
   },
   ".claude/skills/graphify/references/update.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242736.624535,
     "ast_hash": "c698309979460d0f02ba616417844399",
     "semantic_hash": "c698309979460d0f02ba616417844399"
   },
@@ -240,7 +250,7 @@
     "semantic_hash": "e4f190a4692b6dfd741ed4585318122f"
   },
   "CLAUDE.md": {
-    "mtime": 1783264883.7346787,
+    "mtime": 1783242763.0892825,
     "ast_hash": "8f4325d22252957a3cc60d7b69a955fb",
     "semantic_hash": "8f4325d22252957a3cc60d7b69a955fb"
   },
@@ -274,24 +284,9 @@
     "ast_hash": "ecc7eabc451d649cad02d2a5cbca2a59",
     "semantic_hash": "ecc7eabc451d649cad02d2a5cbca2a59"
   },
-  "app/src/main/java/hu/vb2007/nfctool/nfc/model/NdefPayload.kt": {
-    "mtime": 1783622921.8154016,
-    "ast_hash": "55188c8061a37ed77fa141a60a7a2c89",
-    "semantic_hash": ""
-  },
-  "app/src/main/java/hu/vb2007/nfctool/nfc/write/NdefWriter.kt": {
-    "mtime": 1783623121.1145763,
-    "ast_hash": "5d7d856428fcd8b9dcb0d32b17570f9c",
-    "semantic_hash": ""
-  },
-  "app/src/test/java/hu/vb2007/nfctool/nfc/write/NdefWriterTest.kt": {
-    "mtime": 1783623381.2542684,
-    "ast_hash": "a76cb3700313bc1df6cb723c505dc226",
-    "semantic_hash": ""
-  },
-  ".github/workflows/test.yml": {
-    "mtime": 1783266959.8040164,
-    "ast_hash": "91cc8b530e2849774241cc32fb67653e",
-    "semantic_hash": ""
+  "references/gh-release.yml": {
+    "mtime": 1783216063.7528238,
+    "ast_hash": "da7f189ba6e0da5397af7c4825408ead",
+    "semantic_hash": "da7f189ba6e0da5397af7c4825408ead"
   }
 }

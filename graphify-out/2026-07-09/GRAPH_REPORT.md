@@ -1,7 +1,7 @@
 # Graph Report - nfctools-app  (2026-07-09)
 
 ## Corpus Check
-- 57 files · ~21,670 words
+- 57 files · ~21,680 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `584af5ea`
+- Built from commit: `6ba37866`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

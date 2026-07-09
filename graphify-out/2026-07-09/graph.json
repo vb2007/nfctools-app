@@ -1363,7 +1363,7 @@
       "label": "AppRoot()",
       "file_type": "code",
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L15",
+      "source_location": "L17",
       "_origin": "ast",
       "id": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "community": 5,
@@ -3590,7 +3590,7 @@
       "contributor": null,
       "community": 88,
       "norm_label": "graphify always-on trigger instruction",
-      "id": "claude_claude_claude_claude_graphify_integration_note"
+      "id": "claude_claude_claude_claude_claude_graphify_integration_note"
     },
     {
       "label": "Graphify Pipeline (/graphify)",
@@ -7196,7 +7196,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L44",
+      "source_location": "L50",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_home_homescreen_homescreen"
@@ -7239,7 +7239,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L24",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_appbottombar_appbottombar"
@@ -7248,7 +7248,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L15",
+      "source_location": "L17",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
@@ -7260,7 +7260,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L50",
+      "source_location": "L56",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_read_readscreen_readscreen"
@@ -7271,7 +7271,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L49",
+      "source_location": "L55",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_settings_settingsscreen_settingsscreen"
@@ -7282,7 +7282,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "app/src/main/java/hu/vb2007/nfctool/ui/navigation/AppRoot.kt",
-      "source_location": "L51",
+      "source_location": "L57",
       "weight": 1.0,
       "source": "app_src_main_java_hu_vb2007_nfctool_ui_navigation_approot_approot",
       "target": "app_src_main_java_hu_vb2007_nfctool_ui_write_writescreen_writescreen"
@@ -9667,5 +9667,5 @@
       "source_file": ".github/workflows/release.yml"
     }
   ],
-  "built_at_commit": "584af5ea054fb974f5a26ec2a06c12784e051d5a"
+  "built_at_commit": "6ba37866414a6a70152c43639c8e31c75d4a2805"
 }

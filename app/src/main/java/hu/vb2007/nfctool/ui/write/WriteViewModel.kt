@@ -6,7 +6,6 @@ import hu.vb2007.nfctool.nfc.NfcAdapterState
 import hu.vb2007.nfctool.nfc.NfcController
 import hu.vb2007.nfctool.nfc.NfcEvent
 import hu.vb2007.nfctool.nfc.model.NdefPayload
-import hu.vb2007.nfctool.nfc.model.WriteRequest
 import hu.vb2007.nfctool.nfc.model.WriteResult
 import hu.vb2007.nfctool.nfc.write.NdefWriter
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -29,11 +28,10 @@ sealed interface WriteUiState {
         val contactName: String = "",
         val contactPhone: String = "",
         val contactEmail: String = "",
-        val makeReadOnly: Boolean = false,
     ) : WriteUiState
 
     data class WaitingForTag(val editing: Editing) : WriteUiState
-    data class Success(val madeReadOnly: Boolean, val warning: String? = null) : WriteUiState
+    data object Success : WriteUiState
     data class Failure(val reason: String, val editing: Editing) : WriteUiState
 }
 
@@ -71,12 +69,11 @@ class WriteViewModel(
                 if (event is NfcEvent.WriteCompleted) {
                     val editing = (uiState.value as? WriteUiState.WaitingForTag)?.editing ?: WriteUiState.Editing()
                     _uiState.value = when (val result = event.result) {
-                        is WriteResult.Success -> WriteUiState.Success(result.madeReadOnly)
+                        WriteResult.Success -> WriteUiState.Success
                         WriteResult.ReadOnly -> WriteUiState.Failure("This tag is read-only", editing)
                         WriteResult.TooLarge -> WriteUiState.Failure("The data is too large for this tag", editing)
                         WriteResult.TagLost -> WriteUiState.Failure("Tag was moved away before writing finished", editing)
                         is WriteResult.Error -> WriteUiState.Failure(result.reason, editing)
-                        is WriteResult.LockFailed -> WriteUiState.Success(madeReadOnly = false, warning = result.reason)
                     }
                 }
             }
@@ -101,7 +98,7 @@ class WriteViewModel(
         }
         if (!editing.isValid()) return
         _uiState.value = WriteUiState.WaitingForTag(editing)
-        nfcController.startWriting(WriteRequest(editing.toPayload(), editing.makeReadOnly))
+        nfcController.startWriting(editing.toPayload())
     }
 
     fun cancelWaiting() {

@@ -8,7 +8,6 @@ import android.nfc.TagLostException
 import android.nfc.tech.Ndef
 import android.nfc.tech.NdefFormatable
 import hu.vb2007.nfctool.nfc.model.NdefPayload
-import hu.vb2007.nfctool.nfc.model.WriteRequest
 import hu.vb2007.nfctool.nfc.model.WriteResult
 import hu.vb2007.nfctool.nfc.read.NdefParser
 import kotlinx.coroutines.Dispatchers
@@ -18,15 +17,15 @@ import java.util.Locale
 
 class NdefWriter {
 
-    suspend fun write(tag: Tag, request: WriteRequest): WriteResult = withContext(Dispatchers.IO) {
+    suspend fun write(tag: Tag, payload: NdefPayload): WriteResult = withContext(Dispatchers.IO) {
         try {
-            val message = buildMessage(request.payload)
+            val message = buildMessage(payload)
             val ndef = Ndef.get(tag)
             when {
-                ndef != null -> writeToNdef(ndef, message, request.makeReadOnly)
+                ndef != null -> writeToNdef(ndef, message)
                 else -> {
                     val formatable = NdefFormatable.get(tag)
-                    if (formatable != null) writeToFormatable(formatable, message, request.makeReadOnly)
+                    if (formatable != null) writeToFormatable(formatable, message)
                     else WriteResult.Error("This tag doesn't support NDEF")
                 }
             }
@@ -48,38 +47,23 @@ class NdefWriter {
         is NdefPayload.Contact -> buildVCardMessage(payload.name, payload.phone, payload.email)
     }
 
-    private fun writeToNdef(ndef: Ndef, message: NdefMessage, makeReadOnly: Boolean): WriteResult {
+    private fun writeToNdef(ndef: Ndef, message: NdefMessage): WriteResult {
         ndef.connect()
         try {
             if (!ndef.isWritable) return WriteResult.ReadOnly
             if (message.toByteArray().size > ndef.maxSize) return WriteResult.TooLarge
             ndef.writeNdefMessage(message)
-            if (!makeReadOnly) return WriteResult.Success(madeReadOnly = false)
-            return if (tryMakeReadOnly(ndef)) {
-                WriteResult.Success(madeReadOnly = true)
-            } else {
-                WriteResult.LockFailed("Tag was written, but locking it read-only failed or isn't supported")
-            }
+            return WriteResult.Success
         } finally {
             ndef.close()
         }
     }
 
-    private fun tryMakeReadOnly(ndef: Ndef): Boolean = try {
-        ndef.canMakeReadOnly() && ndef.makeReadOnly()
-    } catch (e: IOException) {
-        false
-    }
-
-    private fun writeToFormatable(formatable: NdefFormatable, message: NdefMessage, makeReadOnly: Boolean): WriteResult {
+    private fun writeToFormatable(formatable: NdefFormatable, message: NdefMessage): WriteResult {
         formatable.connect()
         try {
-            if (makeReadOnly) {
-                formatable.formatReadOnly(message)
-                return WriteResult.Success(madeReadOnly = true)
-            }
             formatable.format(message)
-            return WriteResult.Success(madeReadOnly = false)
+            return WriteResult.Success
         } finally {
             formatable.close()
         }

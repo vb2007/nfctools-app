@@ -5,8 +5,8 @@ import android.content.Context
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.os.Bundle
+import hu.vb2007.nfctool.nfc.model.NdefPayload
 import hu.vb2007.nfctool.nfc.model.ScanResult
-import hu.vb2007.nfctool.nfc.model.WriteRequest
 import hu.vb2007.nfctool.nfc.model.WriteResult
 import hu.vb2007.nfctool.nfc.read.TagReader
 import hu.vb2007.nfctool.nfc.write.NdefWriter
@@ -26,7 +26,7 @@ enum class NfcAdapterState { NO_HARDWARE, DISABLED, READY }
 private sealed interface NfcIntent {
     data object Idle : NfcIntent
     data object Reading : NfcIntent
-    data class Writing(val request: WriteRequest) : NfcIntent
+    data class Writing(val payload: NdefPayload) : NfcIntent
 }
 
 sealed interface NfcEvent {
@@ -57,8 +57,8 @@ class NfcController(
         intent = NfcIntent.Reading
     }
 
-    fun startWriting(request: WriteRequest) {
-        intent = NfcIntent.Writing(request)
+    fun startWriting(payload: NdefPayload) {
+        intent = NfcIntent.Writing(payload)
     }
 
     fun goIdle() {
@@ -89,7 +89,7 @@ class NfcController(
                 _events.emit(NfcEvent.ReadCompleted(tagReader.read(tag)))
             }
             is NfcIntent.Writing -> scope.launch {
-                _events.emit(NfcEvent.WriteCompleted(ndefWriter.write(tag, current.request)))
+                _events.emit(NfcEvent.WriteCompleted(ndefWriter.write(tag, current.payload)))
             }
             NfcIntent.Idle -> Unit
         }

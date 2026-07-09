@@ -9,8 +9,3 @@ sealed interface NdefPayload {
     data class Sms(val number: String, val body: String) : NdefPayload
     data class Contact(val name: String, val phone: String, val email: String) : NdefPayload
 }
-
-data class WriteRequest(
-    val payload: NdefPayload,
-    val makeReadOnly: Boolean = false,
-)

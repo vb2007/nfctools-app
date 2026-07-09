@@ -13,9 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Checkbox
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FilterChip
@@ -29,9 +27,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -83,8 +78,8 @@ fun WriteScreen(
                     onCancel = viewModel::cancelWaiting,
                     modifier = Modifier.fillMaxSize(),
                 )
-                is WriteUiState.Success -> ResultContent(
-                    message = successMessage(state),
+                WriteUiState.Success -> ResultContent(
+                    message = "Tag written successfully",
                     isError = false,
                     onDismiss = viewModel::reset,
                     modifier = Modifier.fillMaxSize(),
@@ -100,12 +95,6 @@ fun WriteScreen(
     }
 }
 
-private fun successMessage(state: WriteUiState.Success): String = when {
-    state.warning != null -> "Tag written, but ${state.warning}"
-    state.madeReadOnly -> "Tag written and locked read-only"
-    else -> "Tag written successfully"
-}
-
 @Composable
 private fun EditingContent(
     state: WriteUiState.Editing,
@@ -113,8 +102,6 @@ private fun EditingContent(
     onWriteClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    var showLockConfirmDialog by remember { mutableStateOf(false) }
-
     Column(
         modifier = modifier.padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -193,23 +180,6 @@ private fun EditingContent(
             }
         }
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.fillMaxWidth(),
-        ) {
-            Checkbox(
-                checked = state.makeReadOnly,
-                onCheckedChange = { checked ->
-                    if (checked) {
-                        showLockConfirmDialog = true
-                    } else {
-                        onEditingChange { it.copy(makeReadOnly = false) }
-                    }
-                },
-            )
-            Text("Make read-only after writing")
-        }
-
         Button(
             onClick = onWriteClick,
             enabled = state.isValid(),
@@ -217,32 +187,6 @@ private fun EditingContent(
         ) {
             Text("Write")
         }
-    }
-
-    if (showLockConfirmDialog) {
-        AlertDialog(
-            onDismissRequest = { showLockConfirmDialog = false },
-            title = { Text("Make tag read-only?") },
-            text = {
-                Text(
-                    "This permanently locks the tag after writing. It can never be " +
-                        "written to again, on this or any other device. This cannot be undone.",
-                )
-            },
-            confirmButton = {
-                Button(onClick = {
-                    onEditingChange { it.copy(makeReadOnly = true) }
-                    showLockConfirmDialog = false
-                }) {
-                    Text("Lock permanently")
-                }
-            },
-            dismissButton = {
-                OutlinedButton(onClick = { showLockConfirmDialog = false }) {
-                    Text("Cancel")
-                }
-            },
-        )
     }
 }
 

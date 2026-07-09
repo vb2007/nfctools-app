@@ -8,6 +8,15 @@ v1 is implemented and builds/tests/lints clean (`./gradlew assembleDebug testDeb
 
 **The authoritative spec is [`planning/v1-plan.md`](planning/v1-plan.md).** Read it before writing any code — it defines v1 scope, the package layout, the NFC architecture, and the intended build order. This CLAUDE.md summarizes the decisions that should be treated as settled; the plan has the detail.
 
+## Development workflow
+
+- **Branch from `dev`** for new feature/change work — unless already mid-change on another branch, in which case finish that first rather than switching away.
+- **Branch naming**: `dev-<change-name>` (e.g. `dev-v2-ndef-records`).
+- **Before completing any merge to `dev` or `main`, bump the version in `app/build.gradle.kts`:**
+  - `versionCode`: bump automatically, no need to ask.
+  - `versionName`: **always ask the user for the exact value** — never infer it. Talking about a change as "v2" in conversation does **not** mean `versionName` becomes `"2.0.0"`; semantic versioning is the user's call, not a mechanical mapping from a colloquial label.
+- Merging a branch into `dev` triggers CI to publish a **pre-release** on GitHub automatically; later merging `dev` into `main` promotes that into the **live release** — see CI / Releases below for the exact tagging/promotion mechanics.
+
 ## Development environment
 
 - **System/OS package management is manual, done by the user — agents must not run `pacman`/`yay`, or install JDKs.** If something at the OS level appears to be missing, state exactly what's needed and wait rather than trying to install or work around it. This does **not** cover Android SDK components fetched by Gradle/AGP itself during a build (e.g. a missing `platforms;android-NN` or `build-tools;NN` auto-downloaded into `$ANDROID_HOME`) — that's project-scoped tooling, not a system package, and is fine to let happen.
@@ -24,7 +33,7 @@ v1 is implemented and builds/tests/lints clean (`./gradlew assembleDebug testDeb
 
 `.github/workflows/release.yml` runs on a **self-hosted runner** (`vbServer`, Debian) on push to `main`/`dev` (`dev` publishes as a pre-release) plus manual `workflow_dispatch`. Three jobs: `test` (unit tests + lint) → `build` (debug + unsigned-release APKs) → `publish` (tags `v<versionName>` from `app/build.gradle.kts`). No release signing config exists yet — the release APK is unsigned.
 
-Branching model this is built for: feature branches → merge to `dev` (bump `versionName` before the merge; publishes a pre-release) → periodically merge `dev` to `main` once enough has accumulated (publishes the real release). Tags aren't branch-scoped, so `publish` handles the merge-to-`main` case specially: if the tag from that same `versionName` **doesn't exist yet**, it creates a fresh release; if it **already exists** (because `dev` already pre-released this exact version), it promotes that existing release from pre-release to latest instead of silently no-oping — `main` never needs its own version bump just to "re-release" what `dev` already built.
+Branching model this is built for: feature branches → merge to `dev` (see Development workflow above for the version-bump rule) → periodically merge `dev` to `main` once enough has accumulated (publishes the real release). Tags aren't branch-scoped, so `publish` handles the merge-to-`main` case specially: if the tag from that same `versionName` **doesn't exist yet**, it creates a fresh release; if it **already exists** (because `dev` already pre-released this exact version), it promotes that existing release from pre-release to latest instead of silently no-oping — `main` never needs its own version bump just to "re-release" what `dev` already built.
 
 Runner prerequisites (not provisioned by the workflow — see the "system packages are manual" rule above, it applies to the CI machine too): JDK 21 discoverable via `JAVA_HOME`/`PATH`/standard install locations (satisfies both the Gradle wrapper bootstrap and the `jvmToolchain(21)` requirement), Android SDK at `$ANDROID_HOME`, and an authenticated `gh` CLI. `workflow_dispatch` only works for workflows already present on the repo's **default branch** (`main`) — it can't be used to test-run a workflow that only exists on a feature branch; use a temporary branch added to the `push:` trigger instead (removed once proven).
 

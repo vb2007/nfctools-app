@@ -5,24 +5,60 @@ import androidx.lifecycle.viewModelScope
 import hu.vb2007.nfctool.nfc.NfcAdapterState
 import hu.vb2007.nfctool.nfc.NfcController
 import hu.vb2007.nfctool.nfc.NfcEvent
+import hu.vb2007.nfctool.nfc.model.NdefPayload
 import hu.vb2007.nfctool.nfc.model.WriteResult
+import hu.vb2007.nfctool.nfc.write.NdefWriter
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+enum class WriteRecordType { TEXT, URL, TEL, EMAIL, SMS, CONTACT }
+
 sealed interface WriteUiState {
-    data class Editing(val text: String) : WriteUiState
-    data class WaitingForTag(val text: String) : WriteUiState
+    data class Editing(
+        val recordType: WriteRecordType = WriteRecordType.TEXT,
+        val text: String = "",
+        val languageCode: String = NdefWriter.DEFAULT_LANGUAGE_CODE,
+        val uri: String = "",
+        val tel: String = "",
+        val email: String = "",
+        val smsNumber: String = "",
+        val smsBody: String = "",
+        val contactName: String = "",
+        val contactPhone: String = "",
+        val contactEmail: String = "",
+    ) : WriteUiState
+
+    data class WaitingForTag(val editing: Editing) : WriteUiState
     data object Success : WriteUiState
-    data class Failure(val reason: String, val text: String) : WriteUiState
+    data class Failure(val reason: String, val editing: Editing) : WriteUiState
+}
+
+/** True when the current record type has enough input to attempt a write. */
+fun WriteUiState.Editing.isValid(): Boolean = when (recordType) {
+    WriteRecordType.TEXT -> text.isNotBlank()
+    WriteRecordType.URL -> uri.isNotBlank()
+    WriteRecordType.TEL -> tel.isNotBlank()
+    WriteRecordType.EMAIL -> email.isNotBlank()
+    WriteRecordType.SMS -> smsNumber.isNotBlank()
+    WriteRecordType.CONTACT -> contactName.isNotBlank() || contactPhone.isNotBlank() || contactEmail.isNotBlank()
+}
+
+private fun WriteUiState.Editing.toPayload(): NdefPayload = when (recordType) {
+    WriteRecordType.TEXT -> NdefPayload.Text(text, languageCode)
+    WriteRecordType.URL -> NdefPayload.Uri(uri)
+    WriteRecordType.TEL -> NdefPayload.Tel(tel)
+    WriteRecordType.EMAIL -> NdefPayload.Email(email)
+    WriteRecordType.SMS -> NdefPayload.Sms(smsNumber, smsBody)
+    WriteRecordType.CONTACT -> NdefPayload.Contact(contactName, contactPhone, contactEmail)
 }
 
 class WriteViewModel(
     private val nfcController: NfcController,
 ) : ViewModel() {
 
-    private val _uiState = MutableStateFlow<WriteUiState>(WriteUiState.Editing(""))
+    private val _uiState = MutableStateFlow<WriteUiState>(WriteUiState.Editing())
     val uiState: StateFlow<WriteUiState> = _uiState.asStateFlow()
 
     val adapterState: StateFlow<NfcAdapterState> = nfcController.adapterState
@@ -31,42 +67,48 @@ class WriteViewModel(
         viewModelScope.launch {
             nfcController.events.collect { event ->
                 if (event is NfcEvent.WriteCompleted) {
-                    val text = (uiState.value as? WriteUiState.WaitingForTag)?.text.orEmpty()
+                    val editing = (uiState.value as? WriteUiState.WaitingForTag)?.editing ?: WriteUiState.Editing()
                     _uiState.value = when (val result = event.result) {
                         WriteResult.Success -> WriteUiState.Success
-                        WriteResult.ReadOnly -> WriteUiState.Failure("This tag is read-only", text)
-                        WriteResult.TooLarge -> WriteUiState.Failure("The text is too large for this tag", text)
-                        WriteResult.TagLost -> WriteUiState.Failure("Tag was moved away before writing finished", text)
-                        is WriteResult.Error -> WriteUiState.Failure(result.reason, text)
+                        WriteResult.ReadOnly -> WriteUiState.Failure("This tag is read-only", editing)
+                        WriteResult.TooLarge -> WriteUiState.Failure("The data is too large for this tag", editing)
+                        WriteResult.TagLost -> WriteUiState.Failure("Tag was moved away before writing finished", editing)
+                        is WriteResult.Error -> WriteUiState.Failure(result.reason, editing)
                     }
                 }
             }
         }
     }
 
-    fun onTextChange(text: String) {
-        _uiState.value = WriteUiState.Editing(text)
+    /** Applies [transform] to the current editing fields, whether idle or retrying after a failure. */
+    fun updateEditing(transform: (WriteUiState.Editing) -> WriteUiState.Editing) {
+        val current = when (val state = uiState.value) {
+            is WriteUiState.Editing -> state
+            is WriteUiState.Failure -> state.editing
+            else -> return
+        }
+        _uiState.value = transform(current)
     }
 
     fun startWaitingForTag() {
-        val text = when (val state = uiState.value) {
-            is WriteUiState.Editing -> state.text
-            is WriteUiState.Failure -> state.text
+        val editing = when (val state = uiState.value) {
+            is WriteUiState.Editing -> state
+            is WriteUiState.Failure -> state.editing
             else -> return
         }
-        if (text.isBlank()) return
-        _uiState.value = WriteUiState.WaitingForTag(text)
-        nfcController.startWriting(text)
+        if (!editing.isValid()) return
+        _uiState.value = WriteUiState.WaitingForTag(editing)
+        nfcController.startWriting(editing.toPayload())
     }
 
     fun cancelWaiting() {
         nfcController.goIdle()
-        val text = (uiState.value as? WriteUiState.WaitingForTag)?.text.orEmpty()
-        _uiState.value = WriteUiState.Editing(text)
+        val editing = (uiState.value as? WriteUiState.WaitingForTag)?.editing ?: WriteUiState.Editing()
+        _uiState.value = editing
     }
 
     fun reset() {
-        _uiState.value = WriteUiState.Editing("")
+        _uiState.value = WriteUiState.Editing()
     }
 
     override fun onCleared() {

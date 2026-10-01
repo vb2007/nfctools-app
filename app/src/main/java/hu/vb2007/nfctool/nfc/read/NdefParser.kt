@@ -20,11 +20,16 @@ class NdefParser {
         record.tnf == NdefRecord.TNF_ABSOLUTE_URI ->
             NdefRecordModel(NdefRecordKind.URI, "URI", String(record.payload, Charsets.UTF_8))
 
+        record.tnf == NdefRecord.TNF_MIME_MEDIA && record.type.contentEquals(MIME_VCARD) ->
+            NdefRecordModel(NdefRecordKind.CONTACT, "Contact", decodeVCardPayload(record.payload))
+
         else ->
             NdefRecordModel(NdefRecordKind.OTHER, "Record", "${record.payload.size} bytes")
     }
 
     companion object {
+        val MIME_VCARD: ByteArray = "text/vcard".toByteArray(Charsets.US_ASCII)
+
         // NFC Forum URI Record Type Definition, well-known prefix table (index = payload[0]).
         val URI_PREFIXES = arrayOf(
             "", "http://www.", "https://www.", "http://", "https://",
@@ -54,5 +59,8 @@ class NdefParser {
             val prefix = URI_PREFIXES.getOrElse(payload[0].toInt()) { "" }
             return prefix + String(payload, 1, payload.size - 1, Charsets.UTF_8)
         }
+
+        /** Pure: decodes a text/vcard MIME record payload. Testable without hardware. */
+        fun decodeVCardPayload(payload: ByteArray): String = String(payload, Charsets.UTF_8)
     }
 }

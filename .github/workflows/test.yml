@@ -1,0 +1,26 @@
+name: PR tests
+
+on:
+  pull_request:
+    branches: [main, dev]
+
+# One run per PR; a new push cancels the previous run so the single
+# self-hosted runner isn't tied up on superseded commits.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: self-hosted
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Run unit tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Run lint
+        run: ./gradlew lintDebug
